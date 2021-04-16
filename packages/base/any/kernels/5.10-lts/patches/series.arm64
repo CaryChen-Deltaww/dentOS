@@ -38,3 +38,4 @@
 0042-net-phylink-sfp-Add-quirk-for-FINISAR-10G-modules.patch
 0043-switchdev-prestera-v3.1.1.patch
 0044-delta-tn48m-series-dts-pcie-mod-lk-5-10-70.patch
+0045-delta-ccba72-dts.patch
