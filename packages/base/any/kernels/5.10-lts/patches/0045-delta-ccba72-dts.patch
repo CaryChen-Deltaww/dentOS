@@ -3,7 +3,7 @@ new file mode 100644
 index 000000000..597d0ae16
 --- /dev/null
 +++ b/arch/arm64/boot/dts/marvell/delta-ccba72.dts
-@@ -0,0 +1,275 @@
+@@ -0,0 +1,291 @@
 +/*
 + * Copyright (C) 2016 Marvell Technology Group Ltd.
 + *
@@ -57,13 +57,13 @@ index 000000000..597d0ae16
 +	};
 +
 +	cp0_ge2_gmii_pins: ge2-gmii-pins {
-+		marvell,pins = "mpp44", "mpp45", "mpp46", "mpp47", "mpp48", "mpp49",
++		marvell,pins = "mpp44", "mpp45", "mpp46", "mpp47", "mpp48",
 +				"mpp50", "mpp51", "mpp52", "mpp53", "mpp54", "mpp55";
 +		marvell,function = "ge1";
 +	};
 +
 +	cp0_ge2_mii_pins: ge2-mii-pins {
-+		marvell,pins = "mpp32", "mpp33", "mpp34";
++		marvell,pins = "mpp32", "mpp33", "mpp34", "mpp49";
 +		marvell,function = "mii";
 +	};
 +
@@ -217,6 +217,9 @@ index 000000000..597d0ae16
 +	OOB_E1512_PHY: ethernet-phy@0 {
 +		reg = <0x0>;
 +	};
++	OOB_E1111_PHY: ethernet-phy@1 {
++		reg = <0x1>;
++	};
 +};
 +
 +&cp0_xmdio {
@@ -238,6 +241,7 @@ index 000000000..597d0ae16
 +	phys = <&cp0_comphy2 0>;
 +};
 +
++/*
 +&cp0_eth1 {
 +	status = "okay";
 +
@@ -248,7 +252,9 @@ index 000000000..597d0ae16
 +		full-duplex;
 +	};
 +};
++*/
 +
++/*
 +&cp0_eth2 {
 +	status = "okay";
 +
@@ -258,6 +264,16 @@ index 000000000..597d0ae16
 +		speed = <2500>;
 +		full-duplex;
 +	};
++};
++*/
++
++&cp0_eth2 {
++	status = "okay";
++
++	pinctrl-names = "default";
++	pinctrl-0 = <&cp0_ge2_gmii_pins &cp0_ge2_mii_pins>;
++	phy-mode = "mii";
++	phy = <&OOB_E1111_PHY>;
 +};
 +
 +&cp0_crypto {
