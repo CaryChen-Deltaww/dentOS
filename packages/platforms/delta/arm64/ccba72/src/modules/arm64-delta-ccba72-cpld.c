@@ -57,6 +57,7 @@
 #define CPLD_REG_BIT_PG_ALL             3
 
 #define CPLD_REG_BIT_PWR_CTL_B2B        0
+#define CPLD_REG_BIT_PG_SYS_B2B_BYPASS  1
 
 #define CPLD_REG_BIT_INTR_PM            0
 #define CPLD_REG_BIT_INTR_TMP1075       1
@@ -69,16 +70,16 @@
 
 #define CPLD_REG_BIT_RESET_CPU_88F7040  0
 #define CPLD_REG_BIT_RESET_PHY_88E1512  1
-#define CPLD_REG_BIT_RESET_SPI          2
 #define CPLD_REG_BIT_RESET_ALL          3
+#define CPLD_REG_BIT_RESET_B2B          4
 
 #define CPLD_REG_BIT_RESET_FROM_CPU     0
-#define CPLD_REG_BIT_RESET_FROM_B2B     1
 
 #define CPLD_REG_BIT_ACS_STATUS         0
 #define CPLD_REG_BIT_POE_MODE           1
 
 #define CPLD_REG_BIT_SPI_WP             0
+#define CPLD_REG_BIT_USB0_PWR_ENABLE    1
 
 #define CPLD_REG_BIT_WDT_ENABLE         0
 #define CPLD_REG_BIT_WDT_CLEAR          1
@@ -513,6 +514,9 @@ static SENSOR_DEVICE_ATTR_2_RO(powergood_all, bit,
 static SENSOR_DEVICE_ATTR_2_RW(power_control_b2b, bit,
 			       CCBA72_CPLD_REG_PWR_CONTROL,
 			       CPLD_REG_BIT_PWR_CTL_B2B);
+static SENSOR_DEVICE_ATTR_2_RW(pg_sys_b2b_bypass, bit,
+			       CCBA72_CPLD_REG_PWR_CONTROL,
+			       CPLD_REG_BIT_PG_SYS_B2B_BYPASS);
 
 /* Interrupt Input, Register 0x06, Read Clear */
 static SENSOR_DEVICE_ATTR_2_RO(intr_pm, bit,
@@ -546,17 +550,14 @@ static SENSOR_DEVICE_ATTR_2_RW(rst_cpu, bit,
 static SENSOR_DEVICE_ATTR_2_RW(rst_phy, bit,
 			       CCBA72_CPLD_REG_RESET_OUTPUT,
 			       CPLD_REG_BIT_RESET_PHY_88E1512);
-static SENSOR_DEVICE_ATTR_2_RW(rst_spi, bit,
-			       CCBA72_CPLD_REG_RESET_OUTPUT,
-			       CPLD_REG_BIT_RESET_SPI);
 static SENSOR_DEVICE_ATTR_2_RW(rst_all, bit,
 			       CCBA72_CPLD_REG_RESET_OUTPUT,
 			       CPLD_REG_BIT_RESET_ALL);
+static SENSOR_DEVICE_ATTR_2_RW(rst_b2b, bit,
+			       CCBA72_CPLD_REG_RESET_OUTPUT,
+			       CPLD_REG_BIT_RESET_B2B);
 
 /* Reset Input, Register 0x09, Read Only */
-static SENSOR_DEVICE_ATTR_2_RO(rst_from_b2b, bit,
-			       CCBA72_CPLD_REG_RESET_INPUT,
-			       CPLD_REG_BIT_RESET_FROM_B2B);
 static SENSOR_DEVICE_ATTR_2_RO(rst_from_cpu, bit,
 			       CCBA72_CPLD_REG_RESET_INPUT,
 			       CPLD_REG_BIT_RESET_FROM_CPU);
@@ -573,6 +574,9 @@ static SENSOR_DEVICE_ATTR_2_RO(poe_mode, bit,
 static SENSOR_DEVICE_ATTR_2_RW(spi_wp, bit,
 			       CCBA72_CPLD_REG_OTHER_OUTPUT,
 			       CPLD_REG_BIT_SPI_WP);
+static SENSOR_DEVICE_ATTR_2_RW(usb0_pwr_enable, bit,
+			       CCBA72_CPLD_REG_OTHER_OUTPUT,
+			       CPLD_REG_BIT_USB0_PWR_ENABLE);
 
 /* WDT Function, Register 0x10, Read and Write */
 static SENSOR_DEVICE_ATTR_2_RW(wdt_disable, bit,
@@ -600,6 +604,7 @@ static struct attribute *ccba72_cpld_attributes[] = {
 	&sensor_dev_attr_powergood_b2b.dev_attr.attr,
 	&sensor_dev_attr_powergood_all.dev_attr.attr,
 	&sensor_dev_attr_power_control_b2b.dev_attr.attr,
+	&sensor_dev_attr_pg_sys_b2b_bypass.dev_attr.attr,
 	&sensor_dev_attr_intr_pm.dev_attr.attr,
 	&sensor_dev_attr_intr_tmp1075.dev_attr.attr,
 	&sensor_dev_attr_intr_usb.dev_attr.attr,
@@ -609,13 +614,13 @@ static struct attribute *ccba72_cpld_attributes[] = {
 	&sensor_dev_attr_intr_output.dev_attr.attr,
 	&sensor_dev_attr_rst_cpu.dev_attr.attr,
 	&sensor_dev_attr_rst_phy.dev_attr.attr,
-	&sensor_dev_attr_rst_spi.dev_attr.attr,
 	&sensor_dev_attr_rst_all.dev_attr.attr,
-	&sensor_dev_attr_rst_from_b2b.dev_attr.attr,
+	&sensor_dev_attr_rst_b2b.dev_attr.attr,
 	&sensor_dev_attr_rst_from_cpu.dev_attr.attr,
 	&sensor_dev_attr_acs_status.dev_attr.attr,
 	&sensor_dev_attr_poe_mode.dev_attr.attr,
 	&sensor_dev_attr_spi_wp.dev_attr.attr,
+	&sensor_dev_attr_usb0_pwr_enable.dev_attr.attr,
 	&sensor_dev_attr_wdt_disable.dev_attr.attr,
 	&sensor_dev_attr_wdt_clear.dev_attr.attr,
 	&sensor_dev_attr_wdt_timer.dev_attr.attr,
