@@ -3,7 +3,7 @@ new file mode 100644
 index 000000000..597d0ae16
 --- /dev/null
 +++ b/arch/arm64/boot/dts/marvell/delta-ccba72.dts
-@@ -0,0 +1,291 @@
+@@ -0,0 +1,294 @@
 +/*
 + * Copyright (C) 2016 Marvell Technology Group Ltd.
 + *
@@ -273,7 +273,10 @@ index 000000000..597d0ae16
 +	pinctrl-names = "default";
 +	pinctrl-0 = <&cp0_ge2_gmii_pins &cp0_ge2_mii_pins>;
 +	phy-mode = "mii";
-+	phy = <&OOB_E1111_PHY>;
++	fixed-link {
++		speed = <100>;
++		full-duplex;
++	};
 +};
 +
 +&cp0_crypto {
