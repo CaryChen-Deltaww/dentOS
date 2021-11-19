@@ -3,7 +3,7 @@ new file mode 100644
 index 000000000..597d0ae16
 --- /dev/null
 +++ b/arch/arm64/boot/dts/marvell/delta-ccba72.dts
-@@ -0,0 +1,294 @@
+@@ -0,0 +1,289 @@
 +/*
 + * Copyright (C) 2016 Marvell Technology Group Ltd.
 + *
@@ -95,11 +95,6 @@ index 000000000..597d0ae16
 +	cp0_spi1_pins: spi1-pins {
 +		marvell,pins = "mpp12", "mpp13", "mpp14", "mpp15", "mpp16";
 +		marvell,function = "spi1";
-+	};
-+
-+	cp0_i2s_pins: i2s-pins {
-+		marvell,pins = "mpp5", "mpp23", "mpp24", "mpp25", "mpp26";
-+		marvell,function = "au";
 +	};
 +};
 +
@@ -205,7 +200,7 @@ index 000000000..597d0ae16
 +};
 +
 +&cp0_usb3_1 {
-+	status = "okay";
++	status = "disabled";
 +};
 +
 +&cp0_mdio {
