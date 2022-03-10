@@ -304,11 +304,11 @@ if __name__ == '__main__':
     except (OSError, IOError):
         arch_dict = {'kernel_powerpc_load' : "<0x0>", 'kernel_powerpc_entry' : "<0x0>",
 		'kernel_arm32_load' : "<0x61008000>", 'kernel_arm32_entry' : "<0x61008000>" ,
-		'kernel_arm64_load' : "<0x80080000>", 'kernel_arm64_entry' : "<0x80080000>",
+		'kernel_arm64_load' : "<0x2 0x80080000>", 'kernel_arm64_entry' : "<0x2 0x80080000>",
 		'initrd_powerpc_load' : "<0x1000000>", 'initrd_powerpc_entry' : "<0x1000000>",
 		'initrd_arm32_load' : "<0x0000000>", 'initrd_arm32_entry' : "<0x0000000>",
-		'initrd_arm64_load' : "<0x0000000>", 'initrd_arm64_entry' : "<0x0000000>",
-                'dtb_arm64_load' : "<0x90000000>", 'dtb_arm64_entry' : "<0x90000000>"
+		'initrd_arm64_load' : "<0x2 0x0000000>", 'initrd_arm64_entry' : "<0x2 0x0000000>",
+                'dtb_arm64_load' : "<0x2 0x90000000>", 'dtb_arm64_entry' : "<0x2 0x90000000>"
 		 }
         print("Using default flat image tree configuration")
     else:

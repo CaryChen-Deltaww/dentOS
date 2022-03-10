@@ -623,3 +623,7 @@ class OnlPlatformPortConfig_24x1_2x10(object):
 class OnlPlatformPortConfig_8x10(object):
     PORT_COUNT=8
     PORT_CONFIG="8x10"
+
+class OnlPlatformPortConfig_24x1_6x10(object):
+    PORT_COUNT=30
+    PORT_CONFIG="24x1 + 6x10"

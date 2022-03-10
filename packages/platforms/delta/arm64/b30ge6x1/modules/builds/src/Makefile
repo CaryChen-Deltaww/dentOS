@@ -1,0 +1,9 @@
+obj-m += optoe.o
+obj-m += mvDmaDrv.o
+obj-m += mvIntDrv.o
+obj-m += mvMbusDrv.o
+obj-m += arm64-delta-b30ge6x1-cpld.o
+ccflags-y := -I $(ONL)/packages/platforms/delta/arm64/b30ge6x1/modules/builds/src
+mvDmaDrv-y := dmaDriver.o
+mvIntDrv-y := intDriver.o
+mvMbusDrv-y := mbusDriver.o mbusResources.o

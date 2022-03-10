@@ -1,0 +1,48 @@
+############################################################
+#
+# arm64_delta_b30ge6x1 Autogeneration Definitions.
+#
+############################################################
+
+cdefs: &cdefs
+- ARM64_DELTA_B30GE6X1_CONFIG_INCLUDE_LOGGING:
+    doc: "Include or exclude logging."
+    default: 1
+- ARM64_DELTA_B30GE6X1_CONFIG_LOG_OPTIONS_DEFAULT:
+    doc: "Default enabled log options."
+    default: AIM_LOG_OPTIONS_DEFAULT
+- ARM64_DELTA_B30GE6X1_CONFIG_LOG_BITS_DEFAULT:
+    doc: "Default enabled log bits."
+    default: AIM_LOG_BITS_DEFAULT
+- ARM64_DELTA_B30GE6X1_CONFIG_LOG_CUSTOM_BITS_DEFAULT:
+    doc: "Default enabled custom log bits."
+    default: 0
+- ARM64_DELTA_B30GE6X1_CONFIG_PORTING_STDLIB:
+    doc: "Default all porting macros to use the C standard libraries."
+    default: 1
+- ARM64_DELTA_B30GE6X1_CONFIG_PORTING_INCLUDE_STDLIB_HEADERS:
+    doc: "Include standard library headers for stdlib porting macros."
+    default: ARM64_DELTA_B30GE6X1_CONFIG_PORTING_STDLIB
+- ARM64_DELTA_B30GE6X1_CONFIG_INCLUDE_UCLI:
+    doc: "Include generic uCli support."
+    default: 0
+- ARM64_DELTA_B30GE6X1_CONFIG_SFP_COUNT:
+    doc: "SFP Count."
+    default: 0
+
+definitions:
+  cdefs:
+    ARM64_DELTA_B30GE6X1_CONFIG_HEADER:
+      defs: *cdefs
+      basename: arm64_delta_b30ge6x1_config
+
+  portingmacro:
+    ARM64_DELTA_B30GE6X1:
+      macros:
+        - malloc
+        - free
+        - memset
+        - memcpy
+        - vsnprintf
+        - snprintf
+        - strlen

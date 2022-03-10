@@ -1,0 +1,7 @@
+KERNELS := onl-kernel-5.10-lts-arm64-all:arm64
+KMODULES := src
+VENDOR := delta
+BASENAME := arm64-delta-b30ge6x1
+ARCH := arm64
+include $(ONL)/make/kmodule.mk
+export CROSS_COMPILE=aarch64-linux-gnu-
