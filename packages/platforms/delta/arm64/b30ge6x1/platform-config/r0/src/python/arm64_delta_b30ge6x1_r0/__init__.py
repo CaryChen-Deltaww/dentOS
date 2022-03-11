@@ -6,8 +6,8 @@ from onl.platform.delta import *
 class OnlPlatform_arm64_delta_b30ge6x1_r0(OnlPlatformDelta,
                                        OnlPlatformPortConfig_24x1_6x10):
     PLATFORM='arm64-delta-b30ge6x1-r0'
-    MODEL="AC5x"
-    SYS_OBJECT_ID=".5.1"
+    MODEL="B30GE6X1"
+    SYS_OBJECT_ID=".30.6"
 
     def baseconfig(self):
 

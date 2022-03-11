@@ -38,7 +38,7 @@ start() {
 		echo "Still waiting for shm dev to come up..."
 	done
 
-	for i in {1..27}
+	for i in {1..30}
 	do
 		systemctl enable switchdev-online@swp$i
 	done

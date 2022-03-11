@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<data xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" version="2021-10-17-3.24" profile="SwitchDev-sip6">
+<data xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" version="2021-11-23-3.25" profile="Platform SwitchDev">
   <mtsplt:MTS-Platform xmlns:mtsplt="urn:marvell:mts:hw:platform:yang">
     <mtsplt:typedefs>
       <mtsplt:typedef>
@@ -1394,10 +1394,45 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
         <mtsplt:type>uint8</mtsplt:type>
         <mtsplt:description>Specifies the External driver identifier.</mtsplt:description>
       </mtsplt:typedef>
+      <mtsplt:typedef>
+        <mtsplt:name>serdes-ref-clock-type</mtsplt:name>
+        <mtsplt:type>enumeration</mtsplt:type>
+        <mtsplt:description>Specifies SERDES reference clock type.</mtsplt:description>
+        <mtsplt:enum>
+          <mtsplt:name>EXTERNAL_25_SINGLE_ENDED</mtsplt:name>
+          <mtsplt:description>25 MHz external single ended reference clock.</mtsplt:description>
+          <mtsplt:value>1</mtsplt:value>
+        </mtsplt:enum>
+        <mtsplt:enum>
+          <mtsplt:name>EXTERNAL_125_SINGLE_ENDED</mtsplt:name>
+          <mtsplt:description>125 MHz external single ended reference clock.</mtsplt:description>
+          <mtsplt:value>2</mtsplt:value>
+        </mtsplt:enum>
+        <mtsplt:enum>
+          <mtsplt:name>EXTERNAL_125_DIFF</mtsplt:name>
+          <mtsplt:description>125 MHz external differential reference clock.</mtsplt:description>
+          <mtsplt:value>3</mtsplt:value>
+        </mtsplt:enum>
+        <mtsplt:enum>
+          <mtsplt:name>EXTERNAL_156_25_SINGLE_ENDED</mtsplt:name>
+          <mtsplt:description>156.25 MHz external single ended reference clock.</mtsplt:description>
+          <mtsplt:value>4</mtsplt:value>
+        </mtsplt:enum>
+        <mtsplt:enum>
+          <mtsplt:name>EXTERNAL_156_25_DIFF</mtsplt:name>
+          <mtsplt:description>156.25 MHz external differential reference clock.</mtsplt:description>
+          <mtsplt:value>5</mtsplt:value>
+        </mtsplt:enum>
+        <mtsplt:enum>
+          <mtsplt:name>INTERNAL_125</mtsplt:name>
+          <mtsplt:description>125 MHz internal reference clock.</mtsplt:description>
+          <mtsplt:value>6</mtsplt:value>
+        </mtsplt:enum>
+      </mtsplt:typedef>
     </mtsplt:typedefs>
     <mtsplt:MPP-pin-feature-is-supported mtsplt:type="boolean">false</mtsplt:MPP-pin-feature-is-supported>
     <mtsplt:SERDES-feature-is-supported mtsplt:type="boolean">true</mtsplt:SERDES-feature-is-supported>
-    <mtsplt:PHY-feature-is-supported mtsplt:type="boolean">false</mtsplt:PHY-feature-is-supported>
+    <mtsplt:PHY-feature-is-supported mtsplt:type="boolean">true</mtsplt:PHY-feature-is-supported>
     <mtsplt:oob-feature-is-supported mtsplt:type="boolean">false</mtsplt:oob-feature-is-supported>
     <mtsplt:Fan-feature-is-supported mtsplt:type="boolean">false</mtsplt:Fan-feature-is-supported>
     <mtsplt:LED-feature-is-supported mtsplt:type="boolean">true</mtsplt:LED-feature-is-supported>
@@ -1416,90 +1451,33 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
     <mtsplt:Network-ports>
       <mtsplt:front-panel-group-list>
         <mtsplt:group-number mtsplt:type="panel-group-number-type">1</mtsplt:group-number>
-        <mtsplt:group-ordering mtsplt:type="panel-group-ordering-type">RightDown</mtsplt:group-ordering>
-        <mtsplt:speed mtsplt:type="speed-type">10G</mtsplt:speed>
-        <mtsplt:prefix-name mtsplt:type="string"/>
-        <mtsplt:first-port-number-shift mtsplt:type="panel-port-number-type">8</mtsplt:first-port-number-shift>
+        <mtsplt:group-ordering mtsplt:type="panel-group-ordering-type">DownRight</mtsplt:group-ordering>
+        <mtsplt:speed mtsplt:type="speed-type">1G</mtsplt:speed>
+        <mtsplt:prefix-name mtsplt:type="string">1GbE</mtsplt:prefix-name>
+        <mtsplt:first-port-number-shift mtsplt:type="panel-port-number-type">16</mtsplt:first-port-number-shift>
         <mtsplt:port-list>
           <mtsplt:port-number mtsplt:type="panel-port-number-type">1</mtsplt:port-number>
           <mtsplt:pp-device-number mtsplt:type="pp-device-number-type">0</mtsplt:pp-device-number>
           <mtsplt:pp-port-number mtsplt:type="pp-port-number-type">0</mtsplt:pp-port-number>
           <mtsplt:logical-port-number mtsplt:type="logical-port-number-type">0</mtsplt:logical-port-number>
-          <mtsplt:transceiver mtsplt:type="transceiver-type">fiber</mtsplt:transceiver>
-          <mtsplt:fiber-L1-interface-modes-group>
+          <mtsplt:is-phy-used mtsplt:type="boolean">true</mtsplt:is-phy-used>
+          <mtsplt:port-phy>
+            <mtsplt:phy-read-write-address>
+              <mtsplt:phy-number mtsplt:type="phy-number-type">0</mtsplt:phy-number>
+              <mtsplt:phy-position mtsplt:type="phy-position-type">0</mtsplt:phy-position>
+              <mtsplt:phy-smi-interface-type mtsplt:type="smi-xsmi-type-type">smi</mtsplt:phy-smi-interface-type>
+              <mtsplt:phy-pp-device mtsplt:type="pp-device-number-type">0</mtsplt:phy-pp-device>
+              <mtsplt:phy-smi-xsmi-interface-id mtsplt:type="smi-xsmi-interface-id-type">0</mtsplt:phy-smi-xsmi-interface-id>
+              <mtsplt:phy-smi-xsmi-address mtsplt:type="smi-xsmi-address-type">0</mtsplt:phy-smi-xsmi-address>
+            </mtsplt:phy-read-write-address>
+          </mtsplt:port-phy>
+          <mtsplt:transceiver mtsplt:type="transceiver-type">copper</mtsplt:transceiver>
+          <mtsplt:copper-L1-interface-modes-group>
             <mtsplt:L1-interface-mode-list>
-              <mtsplt:speed mtsplt:type="speed-type">10G</mtsplt:speed>
-              <mtsplt:mode mtsplt:type="L1-interface-mode-type">SR-LR</mtsplt:mode>
+              <mtsplt:speed mtsplt:type="speed-type">1G</mtsplt:speed>
+              <mtsplt:mode mtsplt:type="L1-interface-mode-type">OUSGMII</mtsplt:mode>
             </mtsplt:L1-interface-mode-list>
-          </mtsplt:fiber-L1-interface-modes-group>
-          <mtsplt:gbic-group>
-            <mtsplt:gbicConnectedInfo>
-              <mtsplt:read-interface-select mtsplt:type="interface-type">interface-i2c</mtsplt:read-interface-select>
-              <mtsplt:read-i2c-interface>
-                <mtsplt:i2c-read-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-read-value>
-                <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
-                  <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
-                  <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
-                </mtsplt:i2c-read-write-address>
-              </mtsplt:read-i2c-interface>
-            </mtsplt:gbicConnectedInfo>
-            <mtsplt:laserIsLossInfo>
-              <mtsplt:read-interface-select mtsplt:type="interface-type">interface-i2c</mtsplt:read-interface-select>
-              <mtsplt:read-i2c-interface>
-                <mtsplt:i2c-read-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-read-value>
-                <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
-                  <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
-                  <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
-                </mtsplt:i2c-read-write-address>
-              </mtsplt:read-i2c-interface>
-            </mtsplt:laserIsLossInfo>
-            <mtsplt:txIsEnabledControl>
-              <mtsplt:write-interface-select mtsplt:type="interface-type">interface-i2c</mtsplt:write-interface-select>
-              <mtsplt:write-i2c-interface>
-                <mtsplt:i2c-write-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-write-value>
-                <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
-                  <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
-                  <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
-                </mtsplt:i2c-read-write-address>
-              </mtsplt:write-i2c-interface>
-            </mtsplt:txIsEnabledControl>
-            <mtsplt:txIsDisabledControl>
-              <mtsplt:write-interface-select mtsplt:type="interface-type">interface-i2c</mtsplt:write-interface-select>
-              <mtsplt:write-i2c-interface>
-                <mtsplt:i2c-write-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-write-value>
-                <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
-                  <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
-                  <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
-                </mtsplt:i2c-read-write-address>
-              </mtsplt:write-i2c-interface>
-            </mtsplt:txIsDisabledControl>
-            <mtsplt:memoryControl>
-              <mtsplt:i2c-read-write-address>
-                <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
-                <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
-                <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
-              </mtsplt:i2c-read-write-address>
-            </mtsplt:memoryControl>
-          </mtsplt:gbic-group>
+          </mtsplt:copper-L1-interface-modes-group>
           <mtsplt:serdes-lane-list>
             <mtsplt:lane-number mtsplt:type="lane-number-type">0</mtsplt:lane-number>
             <mtsplt:port-lane-number mtsplt:type="port-lane-number-type">0</mtsplt:port-lane-number>
@@ -1508,93 +1486,667 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
         <mtsplt:port-list>
           <mtsplt:port-number mtsplt:type="panel-port-number-type">2</mtsplt:port-number>
           <mtsplt:pp-device-number mtsplt:type="pp-device-number-type">0</mtsplt:pp-device-number>
+          <mtsplt:pp-port-number mtsplt:type="pp-port-number-type">1</mtsplt:pp-port-number>
+          <mtsplt:logical-port-number mtsplt:type="logical-port-number-type">1</mtsplt:logical-port-number>
+          <mtsplt:is-phy-used mtsplt:type="boolean">true</mtsplt:is-phy-used>
+          <mtsplt:port-phy>
+            <mtsplt:phy-read-write-address>
+              <mtsplt:phy-number mtsplt:type="phy-number-type">0</mtsplt:phy-number>
+              <mtsplt:phy-position mtsplt:type="phy-position-type">1</mtsplt:phy-position>
+              <mtsplt:phy-smi-interface-type mtsplt:type="smi-xsmi-type-type">smi</mtsplt:phy-smi-interface-type>
+              <mtsplt:phy-pp-device mtsplt:type="pp-device-number-type">0</mtsplt:phy-pp-device>
+              <mtsplt:phy-smi-xsmi-interface-id mtsplt:type="smi-xsmi-interface-id-type">0</mtsplt:phy-smi-xsmi-interface-id>
+              <mtsplt:phy-smi-xsmi-address mtsplt:type="smi-xsmi-address-type">1</mtsplt:phy-smi-xsmi-address>
+            </mtsplt:phy-read-write-address>
+          </mtsplt:port-phy>
+          <mtsplt:transceiver mtsplt:type="transceiver-type">copper</mtsplt:transceiver>
+          <mtsplt:copper-L1-interface-modes-group>
+            <mtsplt:L1-interface-mode-list>
+              <mtsplt:speed mtsplt:type="speed-type">1G</mtsplt:speed>
+              <mtsplt:mode mtsplt:type="L1-interface-mode-type">OUSGMII</mtsplt:mode>
+            </mtsplt:L1-interface-mode-list>
+          </mtsplt:copper-L1-interface-modes-group>
+          <mtsplt:serdes-lane-list>
+            <mtsplt:lane-number mtsplt:type="lane-number-type">0</mtsplt:lane-number>
+            <mtsplt:port-lane-number mtsplt:type="port-lane-number-type">1</mtsplt:port-lane-number>
+          </mtsplt:serdes-lane-list>
+        </mtsplt:port-list>
+        <mtsplt:port-list>
+          <mtsplt:port-number mtsplt:type="panel-port-number-type">3</mtsplt:port-number>
+          <mtsplt:pp-device-number mtsplt:type="pp-device-number-type">0</mtsplt:pp-device-number>
+          <mtsplt:pp-port-number mtsplt:type="pp-port-number-type">2</mtsplt:pp-port-number>
+          <mtsplt:logical-port-number mtsplt:type="logical-port-number-type">2</mtsplt:logical-port-number>
+          <mtsplt:is-phy-used mtsplt:type="boolean">true</mtsplt:is-phy-used>
+          <mtsplt:port-phy>
+            <mtsplt:phy-read-write-address>
+              <mtsplt:phy-number mtsplt:type="phy-number-type">0</mtsplt:phy-number>
+              <mtsplt:phy-position mtsplt:type="phy-position-type">2</mtsplt:phy-position>
+              <mtsplt:phy-smi-interface-type mtsplt:type="smi-xsmi-type-type">smi</mtsplt:phy-smi-interface-type>
+              <mtsplt:phy-pp-device mtsplt:type="pp-device-number-type">0</mtsplt:phy-pp-device>
+              <mtsplt:phy-smi-xsmi-interface-id mtsplt:type="smi-xsmi-interface-id-type">0</mtsplt:phy-smi-xsmi-interface-id>
+              <mtsplt:phy-smi-xsmi-address mtsplt:type="smi-xsmi-address-type">2</mtsplt:phy-smi-xsmi-address>
+            </mtsplt:phy-read-write-address>
+          </mtsplt:port-phy>
+          <mtsplt:transceiver mtsplt:type="transceiver-type">copper</mtsplt:transceiver>
+          <mtsplt:copper-L1-interface-modes-group>
+            <mtsplt:L1-interface-mode-list>
+              <mtsplt:speed mtsplt:type="speed-type">1G</mtsplt:speed>
+              <mtsplt:mode mtsplt:type="L1-interface-mode-type">OUSGMII</mtsplt:mode>
+            </mtsplt:L1-interface-mode-list>
+          </mtsplt:copper-L1-interface-modes-group>
+          <mtsplt:serdes-lane-list>
+            <mtsplt:lane-number mtsplt:type="lane-number-type">0</mtsplt:lane-number>
+            <mtsplt:port-lane-number mtsplt:type="port-lane-number-type">2</mtsplt:port-lane-number>
+          </mtsplt:serdes-lane-list>
+        </mtsplt:port-list>
+        <mtsplt:port-list>
+          <mtsplt:port-number mtsplt:type="panel-port-number-type">4</mtsplt:port-number>
+          <mtsplt:pp-device-number mtsplt:type="pp-device-number-type">0</mtsplt:pp-device-number>
+          <mtsplt:pp-port-number mtsplt:type="pp-port-number-type">3</mtsplt:pp-port-number>
+          <mtsplt:logical-port-number mtsplt:type="logical-port-number-type">3</mtsplt:logical-port-number>
+          <mtsplt:is-phy-used mtsplt:type="boolean">true</mtsplt:is-phy-used>
+          <mtsplt:port-phy>
+            <mtsplt:phy-read-write-address>
+              <mtsplt:phy-number mtsplt:type="phy-number-type">0</mtsplt:phy-number>
+              <mtsplt:phy-position mtsplt:type="phy-position-type">3</mtsplt:phy-position>
+              <mtsplt:phy-smi-interface-type mtsplt:type="smi-xsmi-type-type">smi</mtsplt:phy-smi-interface-type>
+              <mtsplt:phy-pp-device mtsplt:type="pp-device-number-type">0</mtsplt:phy-pp-device>
+              <mtsplt:phy-smi-xsmi-interface-id mtsplt:type="smi-xsmi-interface-id-type">0</mtsplt:phy-smi-xsmi-interface-id>
+              <mtsplt:phy-smi-xsmi-address mtsplt:type="smi-xsmi-address-type">3</mtsplt:phy-smi-xsmi-address>
+            </mtsplt:phy-read-write-address>
+          </mtsplt:port-phy>
+          <mtsplt:transceiver mtsplt:type="transceiver-type">copper</mtsplt:transceiver>
+          <mtsplt:copper-L1-interface-modes-group>
+            <mtsplt:L1-interface-mode-list>
+              <mtsplt:speed mtsplt:type="speed-type">1G</mtsplt:speed>
+              <mtsplt:mode mtsplt:type="L1-interface-mode-type">OUSGMII</mtsplt:mode>
+            </mtsplt:L1-interface-mode-list>
+          </mtsplt:copper-L1-interface-modes-group>
+          <mtsplt:serdes-lane-list>
+            <mtsplt:lane-number mtsplt:type="lane-number-type">0</mtsplt:lane-number>
+            <mtsplt:port-lane-number mtsplt:type="port-lane-number-type">3</mtsplt:port-lane-number>
+          </mtsplt:serdes-lane-list>
+        </mtsplt:port-list>
+        <mtsplt:port-list>
+          <mtsplt:port-number mtsplt:type="panel-port-number-type">5</mtsplt:port-number>
+          <mtsplt:pp-device-number mtsplt:type="pp-device-number-type">0</mtsplt:pp-device-number>
+          <mtsplt:pp-port-number mtsplt:type="pp-port-number-type">4</mtsplt:pp-port-number>
+          <mtsplt:logical-port-number mtsplt:type="logical-port-number-type">4</mtsplt:logical-port-number>
+          <mtsplt:is-phy-used mtsplt:type="boolean">true</mtsplt:is-phy-used>
+          <mtsplt:port-phy>
+            <mtsplt:phy-read-write-address>
+              <mtsplt:phy-number mtsplt:type="phy-number-type">0</mtsplt:phy-number>
+              <mtsplt:phy-position mtsplt:type="phy-position-type">4</mtsplt:phy-position>
+              <mtsplt:phy-smi-interface-type mtsplt:type="smi-xsmi-type-type">smi</mtsplt:phy-smi-interface-type>
+              <mtsplt:phy-pp-device mtsplt:type="pp-device-number-type">0</mtsplt:phy-pp-device>
+              <mtsplt:phy-smi-xsmi-interface-id mtsplt:type="smi-xsmi-interface-id-type">0</mtsplt:phy-smi-xsmi-interface-id>
+              <mtsplt:phy-smi-xsmi-address mtsplt:type="smi-xsmi-address-type">4</mtsplt:phy-smi-xsmi-address>
+            </mtsplt:phy-read-write-address>
+          </mtsplt:port-phy>
+          <mtsplt:transceiver mtsplt:type="transceiver-type">copper</mtsplt:transceiver>
+          <mtsplt:copper-L1-interface-modes-group>
+            <mtsplt:L1-interface-mode-list>
+              <mtsplt:speed mtsplt:type="speed-type">1G</mtsplt:speed>
+              <mtsplt:mode mtsplt:type="L1-interface-mode-type">OUSGMII</mtsplt:mode>
+            </mtsplt:L1-interface-mode-list>
+          </mtsplt:copper-L1-interface-modes-group>
+          <mtsplt:serdes-lane-list>
+            <mtsplt:lane-number mtsplt:type="lane-number-type">0</mtsplt:lane-number>
+            <mtsplt:port-lane-number mtsplt:type="port-lane-number-type">4</mtsplt:port-lane-number>
+          </mtsplt:serdes-lane-list>
+        </mtsplt:port-list>
+        <mtsplt:port-list>
+          <mtsplt:port-number mtsplt:type="panel-port-number-type">6</mtsplt:port-number>
+          <mtsplt:pp-device-number mtsplt:type="pp-device-number-type">0</mtsplt:pp-device-number>
+          <mtsplt:pp-port-number mtsplt:type="pp-port-number-type">5</mtsplt:pp-port-number>
+          <mtsplt:logical-port-number mtsplt:type="logical-port-number-type">5</mtsplt:logical-port-number>
+          <mtsplt:is-phy-used mtsplt:type="boolean">true</mtsplt:is-phy-used>
+          <mtsplt:port-phy>
+            <mtsplt:phy-read-write-address>
+              <mtsplt:phy-number mtsplt:type="phy-number-type">0</mtsplt:phy-number>
+              <mtsplt:phy-position mtsplt:type="phy-position-type">5</mtsplt:phy-position>
+              <mtsplt:phy-smi-interface-type mtsplt:type="smi-xsmi-type-type">smi</mtsplt:phy-smi-interface-type>
+              <mtsplt:phy-pp-device mtsplt:type="pp-device-number-type">0</mtsplt:phy-pp-device>
+              <mtsplt:phy-smi-xsmi-interface-id mtsplt:type="smi-xsmi-interface-id-type">0</mtsplt:phy-smi-xsmi-interface-id>
+              <mtsplt:phy-smi-xsmi-address mtsplt:type="smi-xsmi-address-type">5</mtsplt:phy-smi-xsmi-address>
+            </mtsplt:phy-read-write-address>
+          </mtsplt:port-phy>
+          <mtsplt:transceiver mtsplt:type="transceiver-type">copper</mtsplt:transceiver>
+          <mtsplt:copper-L1-interface-modes-group>
+            <mtsplt:L1-interface-mode-list>
+              <mtsplt:speed mtsplt:type="speed-type">1G</mtsplt:speed>
+              <mtsplt:mode mtsplt:type="L1-interface-mode-type">OUSGMII</mtsplt:mode>
+            </mtsplt:L1-interface-mode-list>
+          </mtsplt:copper-L1-interface-modes-group>
+          <mtsplt:serdes-lane-list>
+            <mtsplt:lane-number mtsplt:type="lane-number-type">0</mtsplt:lane-number>
+            <mtsplt:port-lane-number mtsplt:type="port-lane-number-type">5</mtsplt:port-lane-number>
+          </mtsplt:serdes-lane-list>
+        </mtsplt:port-list>
+        <mtsplt:port-list>
+          <mtsplt:port-number mtsplt:type="panel-port-number-type">7</mtsplt:port-number>
+          <mtsplt:pp-device-number mtsplt:type="pp-device-number-type">0</mtsplt:pp-device-number>
+          <mtsplt:pp-port-number mtsplt:type="pp-port-number-type">6</mtsplt:pp-port-number>
+          <mtsplt:logical-port-number mtsplt:type="logical-port-number-type">6</mtsplt:logical-port-number>
+          <mtsplt:is-phy-used mtsplt:type="boolean">true</mtsplt:is-phy-used>
+          <mtsplt:port-phy>
+            <mtsplt:phy-read-write-address>
+              <mtsplt:phy-number mtsplt:type="phy-number-type">0</mtsplt:phy-number>
+              <mtsplt:phy-position mtsplt:type="phy-position-type">6</mtsplt:phy-position>
+              <mtsplt:phy-smi-interface-type mtsplt:type="smi-xsmi-type-type">smi</mtsplt:phy-smi-interface-type>
+              <mtsplt:phy-pp-device mtsplt:type="pp-device-number-type">0</mtsplt:phy-pp-device>
+              <mtsplt:phy-smi-xsmi-interface-id mtsplt:type="smi-xsmi-interface-id-type">0</mtsplt:phy-smi-xsmi-interface-id>
+              <mtsplt:phy-smi-xsmi-address mtsplt:type="smi-xsmi-address-type">6</mtsplt:phy-smi-xsmi-address>
+            </mtsplt:phy-read-write-address>
+          </mtsplt:port-phy>
+          <mtsplt:transceiver mtsplt:type="transceiver-type">copper</mtsplt:transceiver>
+          <mtsplt:copper-L1-interface-modes-group>
+            <mtsplt:L1-interface-mode-list>
+              <mtsplt:speed mtsplt:type="speed-type">1G</mtsplt:speed>
+              <mtsplt:mode mtsplt:type="L1-interface-mode-type">OUSGMII</mtsplt:mode>
+            </mtsplt:L1-interface-mode-list>
+          </mtsplt:copper-L1-interface-modes-group>
+          <mtsplt:serdes-lane-list>
+            <mtsplt:lane-number mtsplt:type="lane-number-type">0</mtsplt:lane-number>
+            <mtsplt:port-lane-number mtsplt:type="port-lane-number-type">6</mtsplt:port-lane-number>
+          </mtsplt:serdes-lane-list>
+        </mtsplt:port-list>
+        <mtsplt:port-list>
+          <mtsplt:port-number mtsplt:type="panel-port-number-type">8</mtsplt:port-number>
+          <mtsplt:pp-device-number mtsplt:type="pp-device-number-type">0</mtsplt:pp-device-number>
+          <mtsplt:pp-port-number mtsplt:type="pp-port-number-type">7</mtsplt:pp-port-number>
+          <mtsplt:logical-port-number mtsplt:type="logical-port-number-type">7</mtsplt:logical-port-number>
+          <mtsplt:is-phy-used mtsplt:type="boolean">true</mtsplt:is-phy-used>
+          <mtsplt:port-phy>
+            <mtsplt:phy-read-write-address>
+              <mtsplt:phy-number mtsplt:type="phy-number-type">0</mtsplt:phy-number>
+              <mtsplt:phy-position mtsplt:type="phy-position-type">7</mtsplt:phy-position>
+              <mtsplt:phy-smi-interface-type mtsplt:type="smi-xsmi-type-type">smi</mtsplt:phy-smi-interface-type>
+              <mtsplt:phy-pp-device mtsplt:type="pp-device-number-type">0</mtsplt:phy-pp-device>
+              <mtsplt:phy-smi-xsmi-interface-id mtsplt:type="smi-xsmi-interface-id-type">0</mtsplt:phy-smi-xsmi-interface-id>
+              <mtsplt:phy-smi-xsmi-address mtsplt:type="smi-xsmi-address-type">7</mtsplt:phy-smi-xsmi-address>
+            </mtsplt:phy-read-write-address>
+          </mtsplt:port-phy>
+          <mtsplt:transceiver mtsplt:type="transceiver-type">copper</mtsplt:transceiver>
+          <mtsplt:copper-L1-interface-modes-group>
+            <mtsplt:L1-interface-mode-list>
+              <mtsplt:speed mtsplt:type="speed-type">1G</mtsplt:speed>
+              <mtsplt:mode mtsplt:type="L1-interface-mode-type">OUSGMII</mtsplt:mode>
+            </mtsplt:L1-interface-mode-list>
+          </mtsplt:copper-L1-interface-modes-group>
+          <mtsplt:serdes-lane-list>
+            <mtsplt:lane-number mtsplt:type="lane-number-type">0</mtsplt:lane-number>
+            <mtsplt:port-lane-number mtsplt:type="port-lane-number-type">7</mtsplt:port-lane-number>
+          </mtsplt:serdes-lane-list>
+        </mtsplt:port-list>
+        <mtsplt:port-list>
+          <mtsplt:port-number mtsplt:type="panel-port-number-type">9</mtsplt:port-number>
+          <mtsplt:pp-device-number mtsplt:type="pp-device-number-type">0</mtsplt:pp-device-number>
           <mtsplt:pp-port-number mtsplt:type="pp-port-number-type">8</mtsplt:pp-port-number>
           <mtsplt:logical-port-number mtsplt:type="logical-port-number-type">8</mtsplt:logical-port-number>
-          <mtsplt:transceiver mtsplt:type="transceiver-type">fiber</mtsplt:transceiver>
-          <mtsplt:fiber-L1-interface-modes-group>
+          <mtsplt:is-phy-used mtsplt:type="boolean">true</mtsplt:is-phy-used>
+          <mtsplt:port-phy>
+            <mtsplt:phy-read-write-address>
+              <mtsplt:phy-number mtsplt:type="phy-number-type">1</mtsplt:phy-number>
+              <mtsplt:phy-position mtsplt:type="phy-position-type">1</mtsplt:phy-position>
+              <mtsplt:phy-smi-interface-type mtsplt:type="smi-xsmi-type-type">smi</mtsplt:phy-smi-interface-type>
+              <mtsplt:phy-pp-device mtsplt:type="pp-device-number-type">0</mtsplt:phy-pp-device>
+              <mtsplt:phy-smi-xsmi-interface-id mtsplt:type="smi-xsmi-interface-id-type">0</mtsplt:phy-smi-xsmi-interface-id>
+              <mtsplt:phy-smi-xsmi-address mtsplt:type="smi-xsmi-address-type">9</mtsplt:phy-smi-xsmi-address>
+            </mtsplt:phy-read-write-address>
+          </mtsplt:port-phy>
+          <mtsplt:transceiver mtsplt:type="transceiver-type">copper</mtsplt:transceiver>
+          <mtsplt:copper-L1-interface-modes-group>
             <mtsplt:L1-interface-mode-list>
-              <mtsplt:speed mtsplt:type="speed-type">10G</mtsplt:speed>
-              <mtsplt:mode mtsplt:type="L1-interface-mode-type">SR-LR</mtsplt:mode>
+              <mtsplt:speed mtsplt:type="speed-type">1G</mtsplt:speed>
+              <mtsplt:mode mtsplt:type="L1-interface-mode-type">OUSGMII</mtsplt:mode>
             </mtsplt:L1-interface-mode-list>
-          </mtsplt:fiber-L1-interface-modes-group>
-          <mtsplt:gbic-group>
-            <mtsplt:gbicConnectedInfo>
-              <mtsplt:read-interface-select mtsplt:type="interface-type">interface-i2c</mtsplt:read-interface-select>
-              <mtsplt:read-i2c-interface>
-                <mtsplt:i2c-read-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-read-value>
-                <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
-                  <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
-                  <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
-                </mtsplt:i2c-read-write-address>
-              </mtsplt:read-i2c-interface>
-            </mtsplt:gbicConnectedInfo>
-            <mtsplt:laserIsLossInfo>
-              <mtsplt:read-interface-select mtsplt:type="interface-type">interface-i2c</mtsplt:read-interface-select>
-              <mtsplt:read-i2c-interface>
-                <mtsplt:i2c-read-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-read-value>
-                <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
-                  <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
-                  <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
-                </mtsplt:i2c-read-write-address>
-              </mtsplt:read-i2c-interface>
-            </mtsplt:laserIsLossInfo>
-            <mtsplt:txIsEnabledControl>
-              <mtsplt:write-interface-select mtsplt:type="interface-type">interface-i2c</mtsplt:write-interface-select>
-              <mtsplt:write-i2c-interface>
-                <mtsplt:i2c-write-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-write-value>
-                <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
-                  <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
-                  <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
-                </mtsplt:i2c-read-write-address>
-              </mtsplt:write-i2c-interface>
-            </mtsplt:txIsEnabledControl>
-            <mtsplt:txIsDisabledControl>
-              <mtsplt:write-interface-select mtsplt:type="interface-type">interface-i2c</mtsplt:write-interface-select>
-              <mtsplt:write-i2c-interface>
-                <mtsplt:i2c-write-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-write-value>
-                <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
-                  <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
-                  <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
-                </mtsplt:i2c-read-write-address>
-              </mtsplt:write-i2c-interface>
-            </mtsplt:txIsDisabledControl>
-            <mtsplt:memoryControl>
-              <mtsplt:i2c-read-write-address>
-                <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
-                <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
-                <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
-              </mtsplt:i2c-read-write-address>
-            </mtsplt:memoryControl>
-          </mtsplt:gbic-group>
+          </mtsplt:copper-L1-interface-modes-group>
+          <mtsplt:serdes-lane-list>
+            <mtsplt:lane-number mtsplt:type="lane-number-type">1</mtsplt:lane-number>
+            <mtsplt:port-lane-number mtsplt:type="port-lane-number-type">1</mtsplt:port-lane-number>
+          </mtsplt:serdes-lane-list>
+        </mtsplt:port-list>
+        <mtsplt:port-list>
+          <mtsplt:port-number mtsplt:type="panel-port-number-type">10</mtsplt:port-number>
+          <mtsplt:pp-device-number mtsplt:type="pp-device-number-type">0</mtsplt:pp-device-number>
+          <mtsplt:pp-port-number mtsplt:type="pp-port-number-type">9</mtsplt:pp-port-number>
+          <mtsplt:logical-port-number mtsplt:type="logical-port-number-type">9</mtsplt:logical-port-number>
+          <mtsplt:is-phy-used mtsplt:type="boolean">true</mtsplt:is-phy-used>
+          <mtsplt:port-phy>
+            <mtsplt:phy-read-write-address>
+              <mtsplt:phy-number mtsplt:type="phy-number-type">1</mtsplt:phy-number>
+              <mtsplt:phy-position mtsplt:type="phy-position-type">0</mtsplt:phy-position>
+              <mtsplt:phy-smi-interface-type mtsplt:type="smi-xsmi-type-type">smi</mtsplt:phy-smi-interface-type>
+              <mtsplt:phy-pp-device mtsplt:type="pp-device-number-type">0</mtsplt:phy-pp-device>
+              <mtsplt:phy-smi-xsmi-interface-id mtsplt:type="smi-xsmi-interface-id-type">0</mtsplt:phy-smi-xsmi-interface-id>
+              <mtsplt:phy-smi-xsmi-address mtsplt:type="smi-xsmi-address-type">8</mtsplt:phy-smi-xsmi-address>
+            </mtsplt:phy-read-write-address>
+          </mtsplt:port-phy>
+          <mtsplt:transceiver mtsplt:type="transceiver-type">copper</mtsplt:transceiver>
+          <mtsplt:copper-L1-interface-modes-group>
+            <mtsplt:L1-interface-mode-list>
+              <mtsplt:speed mtsplt:type="speed-type">1G</mtsplt:speed>
+              <mtsplt:mode mtsplt:type="L1-interface-mode-type">OUSGMII</mtsplt:mode>
+            </mtsplt:L1-interface-mode-list>
+          </mtsplt:copper-L1-interface-modes-group>
           <mtsplt:serdes-lane-list>
             <mtsplt:lane-number mtsplt:type="lane-number-type">1</mtsplt:lane-number>
             <mtsplt:port-lane-number mtsplt:type="port-lane-number-type">0</mtsplt:port-lane-number>
           </mtsplt:serdes-lane-list>
         </mtsplt:port-list>
         <mtsplt:port-list>
-          <mtsplt:port-number mtsplt:type="panel-port-number-type">25</mtsplt:port-number>
+          <mtsplt:port-number mtsplt:type="panel-port-number-type">11</mtsplt:port-number>
+          <mtsplt:pp-device-number mtsplt:type="pp-device-number-type">0</mtsplt:pp-device-number>
+          <mtsplt:pp-port-number mtsplt:type="pp-port-number-type">10</mtsplt:pp-port-number>
+          <mtsplt:logical-port-number mtsplt:type="logical-port-number-type">10</mtsplt:logical-port-number>
+          <mtsplt:is-phy-used mtsplt:type="boolean">true</mtsplt:is-phy-used>
+          <mtsplt:port-phy>
+            <mtsplt:phy-read-write-address>
+              <mtsplt:phy-number mtsplt:type="phy-number-type">1</mtsplt:phy-number>
+              <mtsplt:phy-position mtsplt:type="phy-position-type">3</mtsplt:phy-position>
+              <mtsplt:phy-smi-interface-type mtsplt:type="smi-xsmi-type-type">smi</mtsplt:phy-smi-interface-type>
+              <mtsplt:phy-pp-device mtsplt:type="pp-device-number-type">0</mtsplt:phy-pp-device>
+              <mtsplt:phy-smi-xsmi-interface-id mtsplt:type="smi-xsmi-interface-id-type">0</mtsplt:phy-smi-xsmi-interface-id>
+              <mtsplt:phy-smi-xsmi-address mtsplt:type="smi-xsmi-address-type">11</mtsplt:phy-smi-xsmi-address>
+            </mtsplt:phy-read-write-address>
+          </mtsplt:port-phy>
+          <mtsplt:transceiver mtsplt:type="transceiver-type">copper</mtsplt:transceiver>
+          <mtsplt:copper-L1-interface-modes-group>
+            <mtsplt:L1-interface-mode-list>
+              <mtsplt:speed mtsplt:type="speed-type">1G</mtsplt:speed>
+              <mtsplt:mode mtsplt:type="L1-interface-mode-type">OUSGMII</mtsplt:mode>
+            </mtsplt:L1-interface-mode-list>
+          </mtsplt:copper-L1-interface-modes-group>
+          <mtsplt:serdes-lane-list>
+            <mtsplt:lane-number mtsplt:type="lane-number-type">1</mtsplt:lane-number>
+            <mtsplt:port-lane-number mtsplt:type="port-lane-number-type">3</mtsplt:port-lane-number>
+          </mtsplt:serdes-lane-list>
+        </mtsplt:port-list>
+        <mtsplt:port-list>
+          <mtsplt:port-number mtsplt:type="panel-port-number-type">12</mtsplt:port-number>
+          <mtsplt:pp-device-number mtsplt:type="pp-device-number-type">0</mtsplt:pp-device-number>
+          <mtsplt:pp-port-number mtsplt:type="pp-port-number-type">11</mtsplt:pp-port-number>
+          <mtsplt:logical-port-number mtsplt:type="logical-port-number-type">11</mtsplt:logical-port-number>
+          <mtsplt:is-phy-used mtsplt:type="boolean">true</mtsplt:is-phy-used>
+          <mtsplt:port-phy>
+            <mtsplt:phy-read-write-address>
+              <mtsplt:phy-number mtsplt:type="phy-number-type">1</mtsplt:phy-number>
+              <mtsplt:phy-position mtsplt:type="phy-position-type">2</mtsplt:phy-position>
+              <mtsplt:phy-smi-interface-type mtsplt:type="smi-xsmi-type-type">smi</mtsplt:phy-smi-interface-type>
+              <mtsplt:phy-pp-device mtsplt:type="pp-device-number-type">0</mtsplt:phy-pp-device>
+              <mtsplt:phy-smi-xsmi-interface-id mtsplt:type="smi-xsmi-interface-id-type">0</mtsplt:phy-smi-xsmi-interface-id>
+              <mtsplt:phy-smi-xsmi-address mtsplt:type="smi-xsmi-address-type">10</mtsplt:phy-smi-xsmi-address>
+            </mtsplt:phy-read-write-address>
+          </mtsplt:port-phy>
+          <mtsplt:transceiver mtsplt:type="transceiver-type">copper</mtsplt:transceiver>
+          <mtsplt:copper-L1-interface-modes-group>
+            <mtsplt:L1-interface-mode-list>
+              <mtsplt:speed mtsplt:type="speed-type">1G</mtsplt:speed>
+              <mtsplt:mode mtsplt:type="L1-interface-mode-type">OUSGMII</mtsplt:mode>
+            </mtsplt:L1-interface-mode-list>
+          </mtsplt:copper-L1-interface-modes-group>
+          <mtsplt:serdes-lane-list>
+            <mtsplt:lane-number mtsplt:type="lane-number-type">1</mtsplt:lane-number>
+            <mtsplt:port-lane-number mtsplt:type="port-lane-number-type">2</mtsplt:port-lane-number>
+          </mtsplt:serdes-lane-list>
+        </mtsplt:port-list>
+        <mtsplt:port-list>
+          <mtsplt:port-number mtsplt:type="panel-port-number-type">13</mtsplt:port-number>
+          <mtsplt:pp-device-number mtsplt:type="pp-device-number-type">0</mtsplt:pp-device-number>
+          <mtsplt:pp-port-number mtsplt:type="pp-port-number-type">12</mtsplt:pp-port-number>
+          <mtsplt:logical-port-number mtsplt:type="logical-port-number-type">12</mtsplt:logical-port-number>
+          <mtsplt:is-phy-used mtsplt:type="boolean">true</mtsplt:is-phy-used>
+          <mtsplt:port-phy>
+            <mtsplt:phy-read-write-address>
+              <mtsplt:phy-number mtsplt:type="phy-number-type">1</mtsplt:phy-number>
+              <mtsplt:phy-position mtsplt:type="phy-position-type">5</mtsplt:phy-position>
+              <mtsplt:phy-smi-interface-type mtsplt:type="smi-xsmi-type-type">smi</mtsplt:phy-smi-interface-type>
+              <mtsplt:phy-pp-device mtsplt:type="pp-device-number-type">0</mtsplt:phy-pp-device>
+              <mtsplt:phy-smi-xsmi-interface-id mtsplt:type="smi-xsmi-interface-id-type">0</mtsplt:phy-smi-xsmi-interface-id>
+              <mtsplt:phy-smi-xsmi-address mtsplt:type="smi-xsmi-address-type">13</mtsplt:phy-smi-xsmi-address>
+            </mtsplt:phy-read-write-address>
+          </mtsplt:port-phy>
+          <mtsplt:transceiver mtsplt:type="transceiver-type">copper</mtsplt:transceiver>
+          <mtsplt:copper-L1-interface-modes-group>
+            <mtsplt:L1-interface-mode-list>
+              <mtsplt:speed mtsplt:type="speed-type">1G</mtsplt:speed>
+              <mtsplt:mode mtsplt:type="L1-interface-mode-type">OUSGMII</mtsplt:mode>
+            </mtsplt:L1-interface-mode-list>
+          </mtsplt:copper-L1-interface-modes-group>
+          <mtsplt:serdes-lane-list>
+            <mtsplt:lane-number mtsplt:type="lane-number-type">1</mtsplt:lane-number>
+            <mtsplt:port-lane-number mtsplt:type="port-lane-number-type">5</mtsplt:port-lane-number>
+          </mtsplt:serdes-lane-list>
+        </mtsplt:port-list>
+        <mtsplt:port-list>
+          <mtsplt:port-number mtsplt:type="panel-port-number-type">14</mtsplt:port-number>
+          <mtsplt:pp-device-number mtsplt:type="pp-device-number-type">0</mtsplt:pp-device-number>
+          <mtsplt:pp-port-number mtsplt:type="pp-port-number-type">13</mtsplt:pp-port-number>
+          <mtsplt:logical-port-number mtsplt:type="logical-port-number-type">13</mtsplt:logical-port-number>
+          <mtsplt:is-phy-used mtsplt:type="boolean">true</mtsplt:is-phy-used>
+          <mtsplt:port-phy>
+            <mtsplt:phy-read-write-address>
+              <mtsplt:phy-number mtsplt:type="phy-number-type">1</mtsplt:phy-number>
+              <mtsplt:phy-position mtsplt:type="phy-position-type">4</mtsplt:phy-position>
+              <mtsplt:phy-smi-interface-type mtsplt:type="smi-xsmi-type-type">smi</mtsplt:phy-smi-interface-type>
+              <mtsplt:phy-pp-device mtsplt:type="pp-device-number-type">0</mtsplt:phy-pp-device>
+              <mtsplt:phy-smi-xsmi-interface-id mtsplt:type="smi-xsmi-interface-id-type">0</mtsplt:phy-smi-xsmi-interface-id>
+              <mtsplt:phy-smi-xsmi-address mtsplt:type="smi-xsmi-address-type">12</mtsplt:phy-smi-xsmi-address>
+            </mtsplt:phy-read-write-address>
+          </mtsplt:port-phy>
+          <mtsplt:transceiver mtsplt:type="transceiver-type">copper</mtsplt:transceiver>
+          <mtsplt:copper-L1-interface-modes-group>
+            <mtsplt:L1-interface-mode-list>
+              <mtsplt:speed mtsplt:type="speed-type">1G</mtsplt:speed>
+              <mtsplt:mode mtsplt:type="L1-interface-mode-type">OUSGMII</mtsplt:mode>
+            </mtsplt:L1-interface-mode-list>
+          </mtsplt:copper-L1-interface-modes-group>
+          <mtsplt:serdes-lane-list>
+            <mtsplt:lane-number mtsplt:type="lane-number-type">1</mtsplt:lane-number>
+            <mtsplt:port-lane-number mtsplt:type="port-lane-number-type">4</mtsplt:port-lane-number>
+          </mtsplt:serdes-lane-list>
+        </mtsplt:port-list>
+        <mtsplt:port-list>
+          <mtsplt:port-number mtsplt:type="panel-port-number-type">15</mtsplt:port-number>
+          <mtsplt:pp-device-number mtsplt:type="pp-device-number-type">0</mtsplt:pp-device-number>
+          <mtsplt:pp-port-number mtsplt:type="pp-port-number-type">14</mtsplt:pp-port-number>
+          <mtsplt:logical-port-number mtsplt:type="logical-port-number-type">14</mtsplt:logical-port-number>
+          <mtsplt:is-phy-used mtsplt:type="boolean">true</mtsplt:is-phy-used>
+          <mtsplt:port-phy>
+            <mtsplt:phy-read-write-address>
+              <mtsplt:phy-number mtsplt:type="phy-number-type">1</mtsplt:phy-number>
+              <mtsplt:phy-position mtsplt:type="phy-position-type">7</mtsplt:phy-position>
+              <mtsplt:phy-smi-interface-type mtsplt:type="smi-xsmi-type-type">smi</mtsplt:phy-smi-interface-type>
+              <mtsplt:phy-pp-device mtsplt:type="pp-device-number-type">0</mtsplt:phy-pp-device>
+              <mtsplt:phy-smi-xsmi-interface-id mtsplt:type="smi-xsmi-interface-id-type">0</mtsplt:phy-smi-xsmi-interface-id>
+              <mtsplt:phy-smi-xsmi-address mtsplt:type="smi-xsmi-address-type">15</mtsplt:phy-smi-xsmi-address>
+            </mtsplt:phy-read-write-address>
+          </mtsplt:port-phy>
+          <mtsplt:transceiver mtsplt:type="transceiver-type">copper</mtsplt:transceiver>
+          <mtsplt:copper-L1-interface-modes-group>
+            <mtsplt:L1-interface-mode-list>
+              <mtsplt:speed mtsplt:type="speed-type">1G</mtsplt:speed>
+              <mtsplt:mode mtsplt:type="L1-interface-mode-type">OUSGMII</mtsplt:mode>
+            </mtsplt:L1-interface-mode-list>
+          </mtsplt:copper-L1-interface-modes-group>
+          <mtsplt:serdes-lane-list>
+            <mtsplt:lane-number mtsplt:type="lane-number-type">1</mtsplt:lane-number>
+            <mtsplt:port-lane-number mtsplt:type="port-lane-number-type">7</mtsplt:port-lane-number>
+          </mtsplt:serdes-lane-list>
+        </mtsplt:port-list>
+        <mtsplt:port-list>
+          <mtsplt:port-number mtsplt:type="panel-port-number-type">16</mtsplt:port-number>
+          <mtsplt:pp-device-number mtsplt:type="pp-device-number-type">0</mtsplt:pp-device-number>
+          <mtsplt:pp-port-number mtsplt:type="pp-port-number-type">15</mtsplt:pp-port-number>
+          <mtsplt:logical-port-number mtsplt:type="logical-port-number-type">15</mtsplt:logical-port-number>
+          <mtsplt:is-phy-used mtsplt:type="boolean">true</mtsplt:is-phy-used>
+          <mtsplt:port-phy>
+            <mtsplt:phy-read-write-address>
+              <mtsplt:phy-number mtsplt:type="phy-number-type">1</mtsplt:phy-number>
+              <mtsplt:phy-position mtsplt:type="phy-position-type">6</mtsplt:phy-position>
+              <mtsplt:phy-smi-interface-type mtsplt:type="smi-xsmi-type-type">smi</mtsplt:phy-smi-interface-type>
+              <mtsplt:phy-pp-device mtsplt:type="pp-device-number-type">0</mtsplt:phy-pp-device>
+              <mtsplt:phy-smi-xsmi-interface-id mtsplt:type="smi-xsmi-interface-id-type">0</mtsplt:phy-smi-xsmi-interface-id>
+              <mtsplt:phy-smi-xsmi-address mtsplt:type="smi-xsmi-address-type">14</mtsplt:phy-smi-xsmi-address>
+            </mtsplt:phy-read-write-address>
+          </mtsplt:port-phy>
+          <mtsplt:transceiver mtsplt:type="transceiver-type">copper</mtsplt:transceiver>
+          <mtsplt:copper-L1-interface-modes-group>
+            <mtsplt:L1-interface-mode-list>
+              <mtsplt:speed mtsplt:type="speed-type">1G</mtsplt:speed>
+              <mtsplt:mode mtsplt:type="L1-interface-mode-type">OUSGMII</mtsplt:mode>
+            </mtsplt:L1-interface-mode-list>
+          </mtsplt:copper-L1-interface-modes-group>
+          <mtsplt:serdes-lane-list>
+            <mtsplt:lane-number mtsplt:type="lane-number-type">1</mtsplt:lane-number>
+            <mtsplt:port-lane-number mtsplt:type="port-lane-number-type">6</mtsplt:port-lane-number>
+          </mtsplt:serdes-lane-list>
+        </mtsplt:port-list>
+      </mtsplt:front-panel-group-list>
+      <mtsplt:front-panel-group-list>
+        <mtsplt:group-number mtsplt:type="panel-group-number-type">2</mtsplt:group-number>
+        <mtsplt:group-ordering mtsplt:type="panel-group-ordering-type">DownRight</mtsplt:group-ordering>
+        <mtsplt:speed mtsplt:type="speed-type">2.5G</mtsplt:speed>
+        <mtsplt:prefix-name mtsplt:type="string">2.5GbE</mtsplt:prefix-name>
+        <mtsplt:first-port-number-shift mtsplt:type="panel-port-number-type">8</mtsplt:first-port-number-shift>
+        <mtsplt:port-list>
+          <mtsplt:port-number mtsplt:type="panel-port-number-type">1</mtsplt:port-number>
+          <mtsplt:pp-device-number mtsplt:type="pp-device-number-type">0</mtsplt:pp-device-number>
+          <mtsplt:pp-port-number mtsplt:type="pp-port-number-type">16</mtsplt:pp-port-number>
+          <mtsplt:logical-port-number mtsplt:type="logical-port-number-type">16</mtsplt:logical-port-number>
+          <mtsplt:is-phy-used mtsplt:type="boolean">true</mtsplt:is-phy-used>
+          <mtsplt:port-phy>
+            <mtsplt:phy-read-write-address>
+              <mtsplt:phy-number mtsplt:type="phy-number-type">2</mtsplt:phy-number>
+              <mtsplt:phy-position mtsplt:type="phy-position-type">1</mtsplt:phy-position>
+              <mtsplt:phy-smi-interface-type mtsplt:type="smi-xsmi-type-type">smi</mtsplt:phy-smi-interface-type>
+              <mtsplt:phy-pp-device mtsplt:type="pp-device-number-type">0</mtsplt:phy-pp-device>
+              <mtsplt:phy-smi-xsmi-interface-id mtsplt:type="smi-xsmi-interface-id-type">1</mtsplt:phy-smi-xsmi-interface-id>
+              <mtsplt:phy-smi-xsmi-address mtsplt:type="smi-xsmi-address-type">1</mtsplt:phy-smi-xsmi-address>
+            </mtsplt:phy-read-write-address>
+          </mtsplt:port-phy>
+          <mtsplt:transceiver mtsplt:type="transceiver-type">copper</mtsplt:transceiver>
+          <mtsplt:copper-L1-interface-modes-group>
+            <mtsplt:L1-interface-mode-list>
+              <mtsplt:speed mtsplt:type="speed-type">2.5G</mtsplt:speed>
+              <mtsplt:mode mtsplt:type="L1-interface-mode-type">OXGMII</mtsplt:mode>
+            </mtsplt:L1-interface-mode-list>
+          </mtsplt:copper-L1-interface-modes-group>
+          <mtsplt:serdes-lane-list>
+            <mtsplt:lane-number mtsplt:type="lane-number-type">2</mtsplt:lane-number>
+            <mtsplt:port-lane-number mtsplt:type="port-lane-number-type">1</mtsplt:port-lane-number>
+          </mtsplt:serdes-lane-list>
+        </mtsplt:port-list>
+        <mtsplt:port-list>
+          <mtsplt:port-number mtsplt:type="panel-port-number-type">2</mtsplt:port-number>
+          <mtsplt:pp-device-number mtsplt:type="pp-device-number-type">0</mtsplt:pp-device-number>
+          <mtsplt:pp-port-number mtsplt:type="pp-port-number-type">17</mtsplt:pp-port-number>
+          <mtsplt:logical-port-number mtsplt:type="logical-port-number-type">17</mtsplt:logical-port-number>
+          <mtsplt:is-phy-used mtsplt:type="boolean">true</mtsplt:is-phy-used>
+          <mtsplt:port-phy>
+            <mtsplt:phy-read-write-address>
+              <mtsplt:phy-number mtsplt:type="phy-number-type">2</mtsplt:phy-number>
+              <mtsplt:phy-position mtsplt:type="phy-position-type">0</mtsplt:phy-position>
+              <mtsplt:phy-smi-interface-type mtsplt:type="smi-xsmi-type-type">smi</mtsplt:phy-smi-interface-type>
+              <mtsplt:phy-pp-device mtsplt:type="pp-device-number-type">0</mtsplt:phy-pp-device>
+              <mtsplt:phy-smi-xsmi-interface-id mtsplt:type="smi-xsmi-interface-id-type">1</mtsplt:phy-smi-xsmi-interface-id>
+              <mtsplt:phy-smi-xsmi-address mtsplt:type="smi-xsmi-address-type">0</mtsplt:phy-smi-xsmi-address>
+            </mtsplt:phy-read-write-address>
+          </mtsplt:port-phy>
+          <mtsplt:transceiver mtsplt:type="transceiver-type">copper</mtsplt:transceiver>
+          <mtsplt:copper-L1-interface-modes-group>
+            <mtsplt:L1-interface-mode-list>
+              <mtsplt:speed mtsplt:type="speed-type">2.5G</mtsplt:speed>
+              <mtsplt:mode mtsplt:type="L1-interface-mode-type">OXGMII</mtsplt:mode>
+            </mtsplt:L1-interface-mode-list>
+          </mtsplt:copper-L1-interface-modes-group>
+          <mtsplt:serdes-lane-list>
+            <mtsplt:lane-number mtsplt:type="lane-number-type">2</mtsplt:lane-number>
+            <mtsplt:port-lane-number mtsplt:type="port-lane-number-type">0</mtsplt:port-lane-number>
+          </mtsplt:serdes-lane-list>
+        </mtsplt:port-list>
+        <mtsplt:port-list>
+          <mtsplt:port-number mtsplt:type="panel-port-number-type">3</mtsplt:port-number>
+          <mtsplt:pp-device-number mtsplt:type="pp-device-number-type">0</mtsplt:pp-device-number>
+          <mtsplt:pp-port-number mtsplt:type="pp-port-number-type">18</mtsplt:pp-port-number>
+          <mtsplt:logical-port-number mtsplt:type="logical-port-number-type">18</mtsplt:logical-port-number>
+          <mtsplt:is-phy-used mtsplt:type="boolean">true</mtsplt:is-phy-used>
+          <mtsplt:port-phy>
+            <mtsplt:phy-read-write-address>
+              <mtsplt:phy-number mtsplt:type="phy-number-type">2</mtsplt:phy-number>
+              <mtsplt:phy-position mtsplt:type="phy-position-type">3</mtsplt:phy-position>
+              <mtsplt:phy-smi-interface-type mtsplt:type="smi-xsmi-type-type">smi</mtsplt:phy-smi-interface-type>
+              <mtsplt:phy-pp-device mtsplt:type="pp-device-number-type">0</mtsplt:phy-pp-device>
+              <mtsplt:phy-smi-xsmi-interface-id mtsplt:type="smi-xsmi-interface-id-type">1</mtsplt:phy-smi-xsmi-interface-id>
+              <mtsplt:phy-smi-xsmi-address mtsplt:type="smi-xsmi-address-type">3</mtsplt:phy-smi-xsmi-address>
+            </mtsplt:phy-read-write-address>
+          </mtsplt:port-phy>
+          <mtsplt:transceiver mtsplt:type="transceiver-type">copper</mtsplt:transceiver>
+          <mtsplt:copper-L1-interface-modes-group>
+            <mtsplt:L1-interface-mode-list>
+              <mtsplt:speed mtsplt:type="speed-type">2.5G</mtsplt:speed>
+              <mtsplt:mode mtsplt:type="L1-interface-mode-type">OXGMII</mtsplt:mode>
+            </mtsplt:L1-interface-mode-list>
+          </mtsplt:copper-L1-interface-modes-group>
+          <mtsplt:serdes-lane-list>
+            <mtsplt:lane-number mtsplt:type="lane-number-type">2</mtsplt:lane-number>
+            <mtsplt:port-lane-number mtsplt:type="port-lane-number-type">3</mtsplt:port-lane-number>
+          </mtsplt:serdes-lane-list>
+        </mtsplt:port-list>
+        <mtsplt:port-list>
+          <mtsplt:port-number mtsplt:type="panel-port-number-type">4</mtsplt:port-number>
+          <mtsplt:pp-device-number mtsplt:type="pp-device-number-type">0</mtsplt:pp-device-number>
+          <mtsplt:pp-port-number mtsplt:type="pp-port-number-type">19</mtsplt:pp-port-number>
+          <mtsplt:logical-port-number mtsplt:type="logical-port-number-type">19</mtsplt:logical-port-number>
+          <mtsplt:is-phy-used mtsplt:type="boolean">true</mtsplt:is-phy-used>
+          <mtsplt:port-phy>
+            <mtsplt:phy-read-write-address>
+              <mtsplt:phy-number mtsplt:type="phy-number-type">2</mtsplt:phy-number>
+              <mtsplt:phy-position mtsplt:type="phy-position-type">2</mtsplt:phy-position>
+              <mtsplt:phy-smi-interface-type mtsplt:type="smi-xsmi-type-type">smi</mtsplt:phy-smi-interface-type>
+              <mtsplt:phy-pp-device mtsplt:type="pp-device-number-type">0</mtsplt:phy-pp-device>
+              <mtsplt:phy-smi-xsmi-interface-id mtsplt:type="smi-xsmi-interface-id-type">1</mtsplt:phy-smi-xsmi-interface-id>
+              <mtsplt:phy-smi-xsmi-address mtsplt:type="smi-xsmi-address-type">2</mtsplt:phy-smi-xsmi-address>
+            </mtsplt:phy-read-write-address>
+          </mtsplt:port-phy>
+          <mtsplt:transceiver mtsplt:type="transceiver-type">copper</mtsplt:transceiver>
+          <mtsplt:copper-L1-interface-modes-group>
+            <mtsplt:L1-interface-mode-list>
+              <mtsplt:speed mtsplt:type="speed-type">2.5G</mtsplt:speed>
+              <mtsplt:mode mtsplt:type="L1-interface-mode-type">OXGMII</mtsplt:mode>
+            </mtsplt:L1-interface-mode-list>
+          </mtsplt:copper-L1-interface-modes-group>
+          <mtsplt:serdes-lane-list>
+            <mtsplt:lane-number mtsplt:type="lane-number-type">2</mtsplt:lane-number>
+            <mtsplt:port-lane-number mtsplt:type="port-lane-number-type">2</mtsplt:port-lane-number>
+          </mtsplt:serdes-lane-list>
+        </mtsplt:port-list>
+        <mtsplt:port-list>
+          <mtsplt:port-number mtsplt:type="panel-port-number-type">5</mtsplt:port-number>
+          <mtsplt:pp-device-number mtsplt:type="pp-device-number-type">0</mtsplt:pp-device-number>
+          <mtsplt:pp-port-number mtsplt:type="pp-port-number-type">20</mtsplt:pp-port-number>
+          <mtsplt:logical-port-number mtsplt:type="logical-port-number-type">20</mtsplt:logical-port-number>
+          <mtsplt:is-phy-used mtsplt:type="boolean">true</mtsplt:is-phy-used>
+          <mtsplt:port-phy>
+            <mtsplt:phy-read-write-address>
+              <mtsplt:phy-number mtsplt:type="phy-number-type">2</mtsplt:phy-number>
+              <mtsplt:phy-position mtsplt:type="phy-position-type">5</mtsplt:phy-position>
+              <mtsplt:phy-smi-interface-type mtsplt:type="smi-xsmi-type-type">smi</mtsplt:phy-smi-interface-type>
+              <mtsplt:phy-pp-device mtsplt:type="pp-device-number-type">0</mtsplt:phy-pp-device>
+              <mtsplt:phy-smi-xsmi-interface-id mtsplt:type="smi-xsmi-interface-id-type">1</mtsplt:phy-smi-xsmi-interface-id>
+              <mtsplt:phy-smi-xsmi-address mtsplt:type="smi-xsmi-address-type">5</mtsplt:phy-smi-xsmi-address>
+            </mtsplt:phy-read-write-address>
+          </mtsplt:port-phy>
+          <mtsplt:transceiver mtsplt:type="transceiver-type">copper</mtsplt:transceiver>
+          <mtsplt:copper-L1-interface-modes-group>
+            <mtsplt:L1-interface-mode-list>
+              <mtsplt:speed mtsplt:type="speed-type">2.5G</mtsplt:speed>
+              <mtsplt:mode mtsplt:type="L1-interface-mode-type">OXGMII</mtsplt:mode>
+            </mtsplt:L1-interface-mode-list>
+          </mtsplt:copper-L1-interface-modes-group>
+          <mtsplt:serdes-lane-list>
+            <mtsplt:lane-number mtsplt:type="lane-number-type">2</mtsplt:lane-number>
+            <mtsplt:port-lane-number mtsplt:type="port-lane-number-type">5</mtsplt:port-lane-number>
+          </mtsplt:serdes-lane-list>
+        </mtsplt:port-list>
+        <mtsplt:port-list>
+          <mtsplt:port-number mtsplt:type="panel-port-number-type">6</mtsplt:port-number>
+          <mtsplt:pp-device-number mtsplt:type="pp-device-number-type">0</mtsplt:pp-device-number>
+          <mtsplt:pp-port-number mtsplt:type="pp-port-number-type">21</mtsplt:pp-port-number>
+          <mtsplt:logical-port-number mtsplt:type="logical-port-number-type">21</mtsplt:logical-port-number>
+          <mtsplt:is-phy-used mtsplt:type="boolean">true</mtsplt:is-phy-used>
+          <mtsplt:port-phy>
+            <mtsplt:phy-read-write-address>
+              <mtsplt:phy-number mtsplt:type="phy-number-type">2</mtsplt:phy-number>
+              <mtsplt:phy-position mtsplt:type="phy-position-type">4</mtsplt:phy-position>
+              <mtsplt:phy-smi-interface-type mtsplt:type="smi-xsmi-type-type">smi</mtsplt:phy-smi-interface-type>
+              <mtsplt:phy-pp-device mtsplt:type="pp-device-number-type">0</mtsplt:phy-pp-device>
+              <mtsplt:phy-smi-xsmi-interface-id mtsplt:type="smi-xsmi-interface-id-type">1</mtsplt:phy-smi-xsmi-interface-id>
+              <mtsplt:phy-smi-xsmi-address mtsplt:type="smi-xsmi-address-type">4</mtsplt:phy-smi-xsmi-address>
+            </mtsplt:phy-read-write-address>
+          </mtsplt:port-phy>
+          <mtsplt:transceiver mtsplt:type="transceiver-type">copper</mtsplt:transceiver>
+          <mtsplt:copper-L1-interface-modes-group>
+            <mtsplt:L1-interface-mode-list>
+              <mtsplt:speed mtsplt:type="speed-type">2.5G</mtsplt:speed>
+              <mtsplt:mode mtsplt:type="L1-interface-mode-type">OXGMII</mtsplt:mode>
+            </mtsplt:L1-interface-mode-list>
+          </mtsplt:copper-L1-interface-modes-group>
+          <mtsplt:serdes-lane-list>
+            <mtsplt:lane-number mtsplt:type="lane-number-type">2</mtsplt:lane-number>
+            <mtsplt:port-lane-number mtsplt:type="port-lane-number-type">4</mtsplt:port-lane-number>
+          </mtsplt:serdes-lane-list>
+        </mtsplt:port-list>
+        <mtsplt:port-list>
+          <mtsplt:port-number mtsplt:type="panel-port-number-type">7</mtsplt:port-number>
+          <mtsplt:pp-device-number mtsplt:type="pp-device-number-type">0</mtsplt:pp-device-number>
+          <mtsplt:pp-port-number mtsplt:type="pp-port-number-type">22</mtsplt:pp-port-number>
+          <mtsplt:logical-port-number mtsplt:type="logical-port-number-type">22</mtsplt:logical-port-number>
+          <mtsplt:is-phy-used mtsplt:type="boolean">true</mtsplt:is-phy-used>
+          <mtsplt:port-phy>
+            <mtsplt:phy-read-write-address>
+              <mtsplt:phy-number mtsplt:type="phy-number-type">2</mtsplt:phy-number>
+              <mtsplt:phy-position mtsplt:type="phy-position-type">7</mtsplt:phy-position>
+              <mtsplt:phy-smi-interface-type mtsplt:type="smi-xsmi-type-type">smi</mtsplt:phy-smi-interface-type>
+              <mtsplt:phy-pp-device mtsplt:type="pp-device-number-type">0</mtsplt:phy-pp-device>
+              <mtsplt:phy-smi-xsmi-interface-id mtsplt:type="smi-xsmi-interface-id-type">1</mtsplt:phy-smi-xsmi-interface-id>
+              <mtsplt:phy-smi-xsmi-address mtsplt:type="smi-xsmi-address-type">7</mtsplt:phy-smi-xsmi-address>
+            </mtsplt:phy-read-write-address>
+          </mtsplt:port-phy>
+          <mtsplt:transceiver mtsplt:type="transceiver-type">copper</mtsplt:transceiver>
+          <mtsplt:copper-L1-interface-modes-group>
+            <mtsplt:L1-interface-mode-list>
+              <mtsplt:speed mtsplt:type="speed-type">2.5G</mtsplt:speed>
+              <mtsplt:mode mtsplt:type="L1-interface-mode-type">OXGMII</mtsplt:mode>
+            </mtsplt:L1-interface-mode-list>
+          </mtsplt:copper-L1-interface-modes-group>
+          <mtsplt:serdes-lane-list>
+            <mtsplt:lane-number mtsplt:type="lane-number-type">2</mtsplt:lane-number>
+            <mtsplt:port-lane-number mtsplt:type="port-lane-number-type">7</mtsplt:port-lane-number>
+          </mtsplt:serdes-lane-list>
+        </mtsplt:port-list>
+        <mtsplt:port-list>
+          <mtsplt:port-number mtsplt:type="panel-port-number-type">8</mtsplt:port-number>
+          <mtsplt:pp-device-number mtsplt:type="pp-device-number-type">0</mtsplt:pp-device-number>
+          <mtsplt:pp-port-number mtsplt:type="pp-port-number-type">23</mtsplt:pp-port-number>
+          <mtsplt:logical-port-number mtsplt:type="logical-port-number-type">23</mtsplt:logical-port-number>
+          <mtsplt:is-phy-used mtsplt:type="boolean">true</mtsplt:is-phy-used>
+          <mtsplt:port-phy>
+            <mtsplt:phy-read-write-address>
+              <mtsplt:phy-number mtsplt:type="phy-number-type">2</mtsplt:phy-number>
+              <mtsplt:phy-position mtsplt:type="phy-position-type">6</mtsplt:phy-position>
+              <mtsplt:phy-smi-interface-type mtsplt:type="smi-xsmi-type-type">smi</mtsplt:phy-smi-interface-type>
+              <mtsplt:phy-pp-device mtsplt:type="pp-device-number-type">0</mtsplt:phy-pp-device>
+              <mtsplt:phy-smi-xsmi-interface-id mtsplt:type="smi-xsmi-interface-id-type">1</mtsplt:phy-smi-xsmi-interface-id>
+              <mtsplt:phy-smi-xsmi-address mtsplt:type="smi-xsmi-address-type">6</mtsplt:phy-smi-xsmi-address>
+            </mtsplt:phy-read-write-address>
+          </mtsplt:port-phy>
+          <mtsplt:transceiver mtsplt:type="transceiver-type">copper</mtsplt:transceiver>
+          <mtsplt:copper-L1-interface-modes-group>
+            <mtsplt:L1-interface-mode-list>
+              <mtsplt:speed mtsplt:type="speed-type">2.5G</mtsplt:speed>
+              <mtsplt:mode mtsplt:type="L1-interface-mode-type">OXGMII</mtsplt:mode>
+            </mtsplt:L1-interface-mode-list>
+          </mtsplt:copper-L1-interface-modes-group>
+          <mtsplt:serdes-lane-list>
+            <mtsplt:lane-number mtsplt:type="lane-number-type">2</mtsplt:lane-number>
+            <mtsplt:port-lane-number mtsplt:type="port-lane-number-type">6</mtsplt:port-lane-number>
+          </mtsplt:serdes-lane-list>
+        </mtsplt:port-list>
+      </mtsplt:front-panel-group-list>
+      <mtsplt:front-panel-group-list>
+        <mtsplt:group-number mtsplt:type="panel-group-number-type">3</mtsplt:group-number>
+        <mtsplt:group-ordering mtsplt:type="panel-group-ordering-type">RightDown</mtsplt:group-ordering>
+        <mtsplt:speed mtsplt:type="speed-type">10G</mtsplt:speed>
+        <mtsplt:prefix-name mtsplt:type="string">10GbE</mtsplt:prefix-name>
+        <mtsplt:first-port-number-shift mtsplt:type="panel-port-number-type">6</mtsplt:first-port-number-shift>
+        <mtsplt:port-list>
+          <mtsplt:port-number mtsplt:type="panel-port-number-type">1</mtsplt:port-number>
           <mtsplt:pp-device-number mtsplt:type="pp-device-number-type">0</mtsplt:pp-device-number>
           <mtsplt:pp-port-number mtsplt:type="pp-port-number-type">48</mtsplt:pp-port-number>
           <mtsplt:logical-port-number mtsplt:type="logical-port-number-type">48</mtsplt:logical-port-number>
+          <mtsplt:is-phy-used mtsplt:type="boolean">false</mtsplt:is-phy-used>
           <mtsplt:transceiver mtsplt:type="transceiver-type">fiber</mtsplt:transceiver>
           <mtsplt:fiber-L1-interface-modes-group>
             <mtsplt:L1-interface-mode-list>
@@ -1606,12 +2158,12 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
             <mtsplt:gbicConnectedInfo>
               <mtsplt:read-interface-select mtsplt:type="interface-type">interface-i2c</mtsplt:read-interface-select>
               <mtsplt:read-i2c-interface>
-                <mtsplt:i2c-read-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-read-value>
+                <mtsplt:i2c-read-value mtsplt:type="i2c-value-type">1</mtsplt:i2c-read-value>
                 <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
+                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">1</mtsplt:i2c-bus-id>
                   <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
+                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">49</mtsplt:i2c-address>
+                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">49</mtsplt:i2c-offset>
                   <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
                   <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
                 </mtsplt:i2c-read-write-address>
@@ -1620,12 +2172,12 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
             <mtsplt:laserIsLossInfo>
               <mtsplt:read-interface-select mtsplt:type="interface-type">interface-i2c</mtsplt:read-interface-select>
               <mtsplt:read-i2c-interface>
-                <mtsplt:i2c-read-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-read-value>
+                <mtsplt:i2c-read-value mtsplt:type="i2c-value-type">1</mtsplt:i2c-read-value>
                 <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
+                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">1</mtsplt:i2c-bus-id>
                   <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
+                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">49</mtsplt:i2c-address>
+                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">50</mtsplt:i2c-offset>
                   <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
                   <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
                 </mtsplt:i2c-read-write-address>
@@ -1636,10 +2188,10 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
               <mtsplt:write-i2c-interface>
                 <mtsplt:i2c-write-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-write-value>
                 <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
+                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">1</mtsplt:i2c-bus-id>
                   <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
+                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">49</mtsplt:i2c-address>
+                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">48</mtsplt:i2c-offset>
                   <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
                   <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
                 </mtsplt:i2c-read-write-address>
@@ -1648,12 +2200,12 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
             <mtsplt:txIsDisabledControl>
               <mtsplt:write-interface-select mtsplt:type="interface-type">interface-i2c</mtsplt:write-interface-select>
               <mtsplt:write-i2c-interface>
-                <mtsplt:i2c-write-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-write-value>
+                <mtsplt:i2c-write-value mtsplt:type="i2c-value-type">1</mtsplt:i2c-write-value>
                 <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
+                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">1</mtsplt:i2c-bus-id>
                   <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
+                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">49</mtsplt:i2c-address>
+                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">48</mtsplt:i2c-offset>
                   <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
                   <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
                 </mtsplt:i2c-read-write-address>
@@ -1663,10 +2215,22 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
               <mtsplt:i2c-read-write-address>
                 <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
                 <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
+                <mtsplt:i2c-address mtsplt:type="i2c-address-type">80</mtsplt:i2c-address>
                 <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
+                <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">255</mtsplt:i2c-mask>
                 <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
+                <mtsplt:mux-list>
+                  <mtsplt:mux-number mtsplt:type="uint8">0</mtsplt:mux-number>
+                  <mtsplt:mux-i2c-info>
+                    <mtsplt:mux-i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:mux-i2c-bus-id>
+                    <mtsplt:mux-i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:mux-i2c-access>
+                    <mtsplt:mux-i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:mux-i2c-transaction-type>
+                    <mtsplt:mux-i2c-address mtsplt:type="i2c-address-type">115</mtsplt:mux-i2c-address>
+                    <mtsplt:mux-i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:mux-i2c-offset>
+                    <mtsplt:mux-i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:mux-i2c-mask>
+                    <mtsplt:mux-i2c-value mtsplt:type="i2c-value-type">0</mtsplt:mux-i2c-value>
+                  </mtsplt:mux-i2c-info>
+                </mtsplt:mux-list>
               </mtsplt:i2c-read-write-address>
             </mtsplt:memoryControl>
           </mtsplt:gbic-group>
@@ -1676,10 +2240,11 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
           </mtsplt:serdes-lane-list>
         </mtsplt:port-list>
         <mtsplt:port-list>
-          <mtsplt:port-number mtsplt:type="panel-port-number-type">26</mtsplt:port-number>
+          <mtsplt:port-number mtsplt:type="panel-port-number-type">2</mtsplt:port-number>
           <mtsplt:pp-device-number mtsplt:type="pp-device-number-type">0</mtsplt:pp-device-number>
           <mtsplt:pp-port-number mtsplt:type="pp-port-number-type">49</mtsplt:pp-port-number>
           <mtsplt:logical-port-number mtsplt:type="logical-port-number-type">49</mtsplt:logical-port-number>
+          <mtsplt:is-phy-used mtsplt:type="boolean">false</mtsplt:is-phy-used>
           <mtsplt:transceiver mtsplt:type="transceiver-type">fiber</mtsplt:transceiver>
           <mtsplt:fiber-L1-interface-modes-group>
             <mtsplt:L1-interface-mode-list>
@@ -1691,13 +2256,13 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
             <mtsplt:gbicConnectedInfo>
               <mtsplt:read-interface-select mtsplt:type="interface-type">interface-i2c</mtsplt:read-interface-select>
               <mtsplt:read-i2c-interface>
-                <mtsplt:i2c-read-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-read-value>
+                <mtsplt:i2c-read-value mtsplt:type="i2c-value-type">1</mtsplt:i2c-read-value>
                 <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
+                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">1</mtsplt:i2c-bus-id>
                   <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
+                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">49</mtsplt:i2c-address>
+                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">49</mtsplt:i2c-offset>
+                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">2</mtsplt:i2c-mask>
                   <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
                 </mtsplt:i2c-read-write-address>
               </mtsplt:read-i2c-interface>
@@ -1705,13 +2270,13 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
             <mtsplt:laserIsLossInfo>
               <mtsplt:read-interface-select mtsplt:type="interface-type">interface-i2c</mtsplt:read-interface-select>
               <mtsplt:read-i2c-interface>
-                <mtsplt:i2c-read-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-read-value>
+                <mtsplt:i2c-read-value mtsplt:type="i2c-value-type">1</mtsplt:i2c-read-value>
                 <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
+                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">1</mtsplt:i2c-bus-id>
                   <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
+                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">49</mtsplt:i2c-address>
+                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">50</mtsplt:i2c-offset>
+                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">2</mtsplt:i2c-mask>
                   <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
                 </mtsplt:i2c-read-write-address>
               </mtsplt:read-i2c-interface>
@@ -1721,11 +2286,11 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
               <mtsplt:write-i2c-interface>
                 <mtsplt:i2c-write-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-write-value>
                 <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
+                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">1</mtsplt:i2c-bus-id>
                   <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
+                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">49</mtsplt:i2c-address>
+                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">48</mtsplt:i2c-offset>
+                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">2</mtsplt:i2c-mask>
                   <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
                 </mtsplt:i2c-read-write-address>
               </mtsplt:write-i2c-interface>
@@ -1733,13 +2298,13 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
             <mtsplt:txIsDisabledControl>
               <mtsplt:write-interface-select mtsplt:type="interface-type">interface-i2c</mtsplt:write-interface-select>
               <mtsplt:write-i2c-interface>
-                <mtsplt:i2c-write-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-write-value>
+                <mtsplt:i2c-write-value mtsplt:type="i2c-value-type">1</mtsplt:i2c-write-value>
                 <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
+                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">1</mtsplt:i2c-bus-id>
                   <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
+                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">49</mtsplt:i2c-address>
+                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">48</mtsplt:i2c-offset>
+                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">2</mtsplt:i2c-mask>
                   <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
                 </mtsplt:i2c-read-write-address>
               </mtsplt:write-i2c-interface>
@@ -1748,10 +2313,22 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
               <mtsplt:i2c-read-write-address>
                 <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
                 <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
+                <mtsplt:i2c-address mtsplt:type="i2c-address-type">80</mtsplt:i2c-address>
                 <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
+                <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">255</mtsplt:i2c-mask>
                 <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
+                <mtsplt:mux-list>
+                  <mtsplt:mux-number mtsplt:type="uint8">0</mtsplt:mux-number>
+                  <mtsplt:mux-i2c-info>
+                    <mtsplt:mux-i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:mux-i2c-bus-id>
+                    <mtsplt:mux-i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:mux-i2c-access>
+                    <mtsplt:mux-i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:mux-i2c-transaction-type>
+                    <mtsplt:mux-i2c-address mtsplt:type="i2c-address-type">115</mtsplt:mux-i2c-address>
+                    <mtsplt:mux-i2c-offset mtsplt:type="i2c-offset-type">1</mtsplt:mux-i2c-offset>
+                    <mtsplt:mux-i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:mux-i2c-mask>
+                    <mtsplt:mux-i2c-value mtsplt:type="i2c-value-type">1</mtsplt:mux-i2c-value>
+                  </mtsplt:mux-i2c-info>
+                </mtsplt:mux-list>
               </mtsplt:i2c-read-write-address>
             </mtsplt:memoryControl>
           </mtsplt:gbic-group>
@@ -1761,10 +2338,11 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
           </mtsplt:serdes-lane-list>
         </mtsplt:port-list>
         <mtsplt:port-list>
-          <mtsplt:port-number mtsplt:type="panel-port-number-type">27</mtsplt:port-number>
+          <mtsplt:port-number mtsplt:type="panel-port-number-type">3</mtsplt:port-number>
           <mtsplt:pp-device-number mtsplt:type="pp-device-number-type">0</mtsplt:pp-device-number>
           <mtsplt:pp-port-number mtsplt:type="pp-port-number-type">50</mtsplt:pp-port-number>
           <mtsplt:logical-port-number mtsplt:type="logical-port-number-type">50</mtsplt:logical-port-number>
+          <mtsplt:is-phy-used mtsplt:type="boolean">false</mtsplt:is-phy-used>
           <mtsplt:transceiver mtsplt:type="transceiver-type">fiber</mtsplt:transceiver>
           <mtsplt:fiber-L1-interface-modes-group>
             <mtsplt:L1-interface-mode-list>
@@ -1776,13 +2354,13 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
             <mtsplt:gbicConnectedInfo>
               <mtsplt:read-interface-select mtsplt:type="interface-type">interface-i2c</mtsplt:read-interface-select>
               <mtsplt:read-i2c-interface>
-                <mtsplt:i2c-read-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-read-value>
+                <mtsplt:i2c-read-value mtsplt:type="i2c-value-type">1</mtsplt:i2c-read-value>
                 <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
+                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">1</mtsplt:i2c-bus-id>
                   <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
+                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">49</mtsplt:i2c-address>
+                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">49</mtsplt:i2c-offset>
+                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">4</mtsplt:i2c-mask>
                   <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
                 </mtsplt:i2c-read-write-address>
               </mtsplt:read-i2c-interface>
@@ -1790,13 +2368,13 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
             <mtsplt:laserIsLossInfo>
               <mtsplt:read-interface-select mtsplt:type="interface-type">interface-i2c</mtsplt:read-interface-select>
               <mtsplt:read-i2c-interface>
-                <mtsplt:i2c-read-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-read-value>
+                <mtsplt:i2c-read-value mtsplt:type="i2c-value-type">1</mtsplt:i2c-read-value>
                 <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
+                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">1</mtsplt:i2c-bus-id>
                   <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
+                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">49</mtsplt:i2c-address>
+                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">50</mtsplt:i2c-offset>
+                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">4</mtsplt:i2c-mask>
                   <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
                 </mtsplt:i2c-read-write-address>
               </mtsplt:read-i2c-interface>
@@ -1806,11 +2384,11 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
               <mtsplt:write-i2c-interface>
                 <mtsplt:i2c-write-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-write-value>
                 <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
+                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">1</mtsplt:i2c-bus-id>
                   <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
+                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">49</mtsplt:i2c-address>
+                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">48</mtsplt:i2c-offset>
+                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">4</mtsplt:i2c-mask>
                   <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
                 </mtsplt:i2c-read-write-address>
               </mtsplt:write-i2c-interface>
@@ -1818,13 +2396,13 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
             <mtsplt:txIsDisabledControl>
               <mtsplt:write-interface-select mtsplt:type="interface-type">interface-i2c</mtsplt:write-interface-select>
               <mtsplt:write-i2c-interface>
-                <mtsplt:i2c-write-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-write-value>
+                <mtsplt:i2c-write-value mtsplt:type="i2c-value-type">1</mtsplt:i2c-write-value>
                 <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
+                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">1</mtsplt:i2c-bus-id>
                   <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
+                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">49</mtsplt:i2c-address>
+                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">48</mtsplt:i2c-offset>
+                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">4</mtsplt:i2c-mask>
                   <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
                 </mtsplt:i2c-read-write-address>
               </mtsplt:write-i2c-interface>
@@ -1833,10 +2411,22 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
               <mtsplt:i2c-read-write-address>
                 <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
                 <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
+                <mtsplt:i2c-address mtsplt:type="i2c-address-type">80</mtsplt:i2c-address>
                 <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
+                <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">255</mtsplt:i2c-mask>
                 <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
+                <mtsplt:mux-list>
+                  <mtsplt:mux-number mtsplt:type="uint8">0</mtsplt:mux-number>
+                  <mtsplt:mux-i2c-info>
+                    <mtsplt:mux-i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:mux-i2c-bus-id>
+                    <mtsplt:mux-i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:mux-i2c-access>
+                    <mtsplt:mux-i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:mux-i2c-transaction-type>
+                    <mtsplt:mux-i2c-address mtsplt:type="i2c-address-type">115</mtsplt:mux-i2c-address>
+                    <mtsplt:mux-i2c-offset mtsplt:type="i2c-offset-type">2</mtsplt:mux-i2c-offset>
+                    <mtsplt:mux-i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:mux-i2c-mask>
+                    <mtsplt:mux-i2c-value mtsplt:type="i2c-value-type">2</mtsplt:mux-i2c-value>
+                  </mtsplt:mux-i2c-info>
+                </mtsplt:mux-list>
               </mtsplt:i2c-read-write-address>
             </mtsplt:memoryControl>
           </mtsplt:gbic-group>
@@ -1846,10 +2436,11 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
           </mtsplt:serdes-lane-list>
         </mtsplt:port-list>
         <mtsplt:port-list>
-          <mtsplt:port-number mtsplt:type="panel-port-number-type">28</mtsplt:port-number>
+          <mtsplt:port-number mtsplt:type="panel-port-number-type">4</mtsplt:port-number>
           <mtsplt:pp-device-number mtsplt:type="pp-device-number-type">0</mtsplt:pp-device-number>
           <mtsplt:pp-port-number mtsplt:type="pp-port-number-type">51</mtsplt:pp-port-number>
           <mtsplt:logical-port-number mtsplt:type="logical-port-number-type">51</mtsplt:logical-port-number>
+          <mtsplt:is-phy-used mtsplt:type="boolean">false</mtsplt:is-phy-used>
           <mtsplt:transceiver mtsplt:type="transceiver-type">fiber</mtsplt:transceiver>
           <mtsplt:fiber-L1-interface-modes-group>
             <mtsplt:L1-interface-mode-list>
@@ -1861,13 +2452,13 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
             <mtsplt:gbicConnectedInfo>
               <mtsplt:read-interface-select mtsplt:type="interface-type">interface-i2c</mtsplt:read-interface-select>
               <mtsplt:read-i2c-interface>
-                <mtsplt:i2c-read-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-read-value>
+                <mtsplt:i2c-read-value mtsplt:type="i2c-value-type">1</mtsplt:i2c-read-value>
                 <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
+                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">1</mtsplt:i2c-bus-id>
                   <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
+                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">49</mtsplt:i2c-address>
+                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">49</mtsplt:i2c-offset>
+                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">8</mtsplt:i2c-mask>
                   <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
                 </mtsplt:i2c-read-write-address>
               </mtsplt:read-i2c-interface>
@@ -1875,13 +2466,13 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
             <mtsplt:laserIsLossInfo>
               <mtsplt:read-interface-select mtsplt:type="interface-type">interface-i2c</mtsplt:read-interface-select>
               <mtsplt:read-i2c-interface>
-                <mtsplt:i2c-read-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-read-value>
+                <mtsplt:i2c-read-value mtsplt:type="i2c-value-type">1</mtsplt:i2c-read-value>
                 <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
+                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">1</mtsplt:i2c-bus-id>
                   <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
+                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">49</mtsplt:i2c-address>
+                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">50</mtsplt:i2c-offset>
+                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">8</mtsplt:i2c-mask>
                   <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
                 </mtsplt:i2c-read-write-address>
               </mtsplt:read-i2c-interface>
@@ -1891,11 +2482,11 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
               <mtsplt:write-i2c-interface>
                 <mtsplt:i2c-write-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-write-value>
                 <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
+                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">1</mtsplt:i2c-bus-id>
                   <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
+                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">49</mtsplt:i2c-address>
+                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">48</mtsplt:i2c-offset>
+                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">8</mtsplt:i2c-mask>
                   <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
                 </mtsplt:i2c-read-write-address>
               </mtsplt:write-i2c-interface>
@@ -1903,13 +2494,13 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
             <mtsplt:txIsDisabledControl>
               <mtsplt:write-interface-select mtsplt:type="interface-type">interface-i2c</mtsplt:write-interface-select>
               <mtsplt:write-i2c-interface>
-                <mtsplt:i2c-write-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-write-value>
+                <mtsplt:i2c-write-value mtsplt:type="i2c-value-type">1</mtsplt:i2c-write-value>
                 <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
+                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">1</mtsplt:i2c-bus-id>
                   <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
+                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">49</mtsplt:i2c-address>
+                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">48</mtsplt:i2c-offset>
+                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">8</mtsplt:i2c-mask>
                   <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
                 </mtsplt:i2c-read-write-address>
               </mtsplt:write-i2c-interface>
@@ -1918,10 +2509,22 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
               <mtsplt:i2c-read-write-address>
                 <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
                 <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
+                <mtsplt:i2c-address mtsplt:type="i2c-address-type">80</mtsplt:i2c-address>
                 <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
+                <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">255</mtsplt:i2c-mask>
                 <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
+                <mtsplt:mux-list>
+                  <mtsplt:mux-number mtsplt:type="uint8">0</mtsplt:mux-number>
+                  <mtsplt:mux-i2c-info>
+                    <mtsplt:mux-i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:mux-i2c-bus-id>
+                    <mtsplt:mux-i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:mux-i2c-access>
+                    <mtsplt:mux-i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:mux-i2c-transaction-type>
+                    <mtsplt:mux-i2c-address mtsplt:type="i2c-address-type">115</mtsplt:mux-i2c-address>
+                    <mtsplt:mux-i2c-offset mtsplt:type="i2c-offset-type">3</mtsplt:mux-i2c-offset>
+                    <mtsplt:mux-i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:mux-i2c-mask>
+                    <mtsplt:mux-i2c-value mtsplt:type="i2c-value-type">3</mtsplt:mux-i2c-value>
+                  </mtsplt:mux-i2c-info>
+                </mtsplt:mux-list>
               </mtsplt:i2c-read-write-address>
             </mtsplt:memoryControl>
           </mtsplt:gbic-group>
@@ -1931,10 +2534,11 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
           </mtsplt:serdes-lane-list>
         </mtsplt:port-list>
         <mtsplt:port-list>
-          <mtsplt:port-number mtsplt:type="panel-port-number-type">29</mtsplt:port-number>
+          <mtsplt:port-number mtsplt:type="panel-port-number-type">5</mtsplt:port-number>
           <mtsplt:pp-device-number mtsplt:type="pp-device-number-type">0</mtsplt:pp-device-number>
           <mtsplt:pp-port-number mtsplt:type="pp-port-number-type">52</mtsplt:pp-port-number>
           <mtsplt:logical-port-number mtsplt:type="logical-port-number-type">52</mtsplt:logical-port-number>
+          <mtsplt:is-phy-used mtsplt:type="boolean">false</mtsplt:is-phy-used>
           <mtsplt:transceiver mtsplt:type="transceiver-type">fiber</mtsplt:transceiver>
           <mtsplt:fiber-L1-interface-modes-group>
             <mtsplt:L1-interface-mode-list>
@@ -1946,13 +2550,13 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
             <mtsplt:gbicConnectedInfo>
               <mtsplt:read-interface-select mtsplt:type="interface-type">interface-i2c</mtsplt:read-interface-select>
               <mtsplt:read-i2c-interface>
-                <mtsplt:i2c-read-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-read-value>
+                <mtsplt:i2c-read-value mtsplt:type="i2c-value-type">1</mtsplt:i2c-read-value>
                 <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
+                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">1</mtsplt:i2c-bus-id>
                   <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
+                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">49</mtsplt:i2c-address>
+                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">49</mtsplt:i2c-offset>
+                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">16</mtsplt:i2c-mask>
                   <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
                 </mtsplt:i2c-read-write-address>
               </mtsplt:read-i2c-interface>
@@ -1960,13 +2564,13 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
             <mtsplt:laserIsLossInfo>
               <mtsplt:read-interface-select mtsplt:type="interface-type">interface-i2c</mtsplt:read-interface-select>
               <mtsplt:read-i2c-interface>
-                <mtsplt:i2c-read-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-read-value>
+                <mtsplt:i2c-read-value mtsplt:type="i2c-value-type">1</mtsplt:i2c-read-value>
                 <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
+                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">1</mtsplt:i2c-bus-id>
                   <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
+                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">49</mtsplt:i2c-address>
+                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">50</mtsplt:i2c-offset>
+                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">16</mtsplt:i2c-mask>
                   <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
                 </mtsplt:i2c-read-write-address>
               </mtsplt:read-i2c-interface>
@@ -1976,11 +2580,11 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
               <mtsplt:write-i2c-interface>
                 <mtsplt:i2c-write-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-write-value>
                 <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
+                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">1</mtsplt:i2c-bus-id>
                   <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
+                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">49</mtsplt:i2c-address>
+                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">48</mtsplt:i2c-offset>
+                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">16</mtsplt:i2c-mask>
                   <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
                 </mtsplt:i2c-read-write-address>
               </mtsplt:write-i2c-interface>
@@ -1988,13 +2592,13 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
             <mtsplt:txIsDisabledControl>
               <mtsplt:write-interface-select mtsplt:type="interface-type">interface-i2c</mtsplt:write-interface-select>
               <mtsplt:write-i2c-interface>
-                <mtsplt:i2c-write-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-write-value>
+                <mtsplt:i2c-write-value mtsplt:type="i2c-value-type">1</mtsplt:i2c-write-value>
                 <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
+                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">1</mtsplt:i2c-bus-id>
                   <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
+                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">49</mtsplt:i2c-address>
+                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">48</mtsplt:i2c-offset>
+                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">16</mtsplt:i2c-mask>
                   <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
                 </mtsplt:i2c-read-write-address>
               </mtsplt:write-i2c-interface>
@@ -2003,10 +2607,22 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
               <mtsplt:i2c-read-write-address>
                 <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
                 <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
+                <mtsplt:i2c-address mtsplt:type="i2c-address-type">80</mtsplt:i2c-address>
                 <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
+                <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">255</mtsplt:i2c-mask>
                 <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
+                <mtsplt:mux-list>
+                  <mtsplt:mux-number mtsplt:type="uint8">0</mtsplt:mux-number>
+                  <mtsplt:mux-i2c-info>
+                    <mtsplt:mux-i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:mux-i2c-bus-id>
+                    <mtsplt:mux-i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:mux-i2c-access>
+                    <mtsplt:mux-i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:mux-i2c-transaction-type>
+                    <mtsplt:mux-i2c-address mtsplt:type="i2c-address-type">115</mtsplt:mux-i2c-address>
+                    <mtsplt:mux-i2c-offset mtsplt:type="i2c-offset-type">4</mtsplt:mux-i2c-offset>
+                    <mtsplt:mux-i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:mux-i2c-mask>
+                    <mtsplt:mux-i2c-value mtsplt:type="i2c-value-type">4</mtsplt:mux-i2c-value>
+                  </mtsplt:mux-i2c-info>
+                </mtsplt:mux-list>
               </mtsplt:i2c-read-write-address>
             </mtsplt:memoryControl>
           </mtsplt:gbic-group>
@@ -2016,10 +2632,11 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
           </mtsplt:serdes-lane-list>
         </mtsplt:port-list>
         <mtsplt:port-list>
-          <mtsplt:port-number mtsplt:type="panel-port-number-type">30</mtsplt:port-number>
+          <mtsplt:port-number mtsplt:type="panel-port-number-type">6</mtsplt:port-number>
           <mtsplt:pp-device-number mtsplt:type="pp-device-number-type">0</mtsplt:pp-device-number>
           <mtsplt:pp-port-number mtsplt:type="pp-port-number-type">53</mtsplt:pp-port-number>
           <mtsplt:logical-port-number mtsplt:type="logical-port-number-type">53</mtsplt:logical-port-number>
+          <mtsplt:is-phy-used mtsplt:type="boolean">false</mtsplt:is-phy-used>
           <mtsplt:transceiver mtsplt:type="transceiver-type">fiber</mtsplt:transceiver>
           <mtsplt:fiber-L1-interface-modes-group>
             <mtsplt:L1-interface-mode-list>
@@ -2031,13 +2648,13 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
             <mtsplt:gbicConnectedInfo>
               <mtsplt:read-interface-select mtsplt:type="interface-type">interface-i2c</mtsplt:read-interface-select>
               <mtsplt:read-i2c-interface>
-                <mtsplt:i2c-read-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-read-value>
+                <mtsplt:i2c-read-value mtsplt:type="i2c-value-type">1</mtsplt:i2c-read-value>
                 <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
+                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">1</mtsplt:i2c-bus-id>
                   <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
+                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">49</mtsplt:i2c-address>
+                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">49</mtsplt:i2c-offset>
+                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">32</mtsplt:i2c-mask>
                   <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
                 </mtsplt:i2c-read-write-address>
               </mtsplt:read-i2c-interface>
@@ -2045,13 +2662,13 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
             <mtsplt:laserIsLossInfo>
               <mtsplt:read-interface-select mtsplt:type="interface-type">interface-i2c</mtsplt:read-interface-select>
               <mtsplt:read-i2c-interface>
-                <mtsplt:i2c-read-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-read-value>
+                <mtsplt:i2c-read-value mtsplt:type="i2c-value-type">1</mtsplt:i2c-read-value>
                 <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
+                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">1</mtsplt:i2c-bus-id>
                   <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
+                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">49</mtsplt:i2c-address>
+                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">50</mtsplt:i2c-offset>
+                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">32</mtsplt:i2c-mask>
                   <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
                 </mtsplt:i2c-read-write-address>
               </mtsplt:read-i2c-interface>
@@ -2061,11 +2678,11 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
               <mtsplt:write-i2c-interface>
                 <mtsplt:i2c-write-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-write-value>
                 <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
+                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">1</mtsplt:i2c-bus-id>
                   <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
+                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">49</mtsplt:i2c-address>
+                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">48</mtsplt:i2c-offset>
+                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">32</mtsplt:i2c-mask>
                   <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
                 </mtsplt:i2c-read-write-address>
               </mtsplt:write-i2c-interface>
@@ -2073,13 +2690,13 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
             <mtsplt:txIsDisabledControl>
               <mtsplt:write-interface-select mtsplt:type="interface-type">interface-i2c</mtsplt:write-interface-select>
               <mtsplt:write-i2c-interface>
-                <mtsplt:i2c-write-value mtsplt:type="i2c-value-type">0</mtsplt:i2c-write-value>
+                <mtsplt:i2c-write-value mtsplt:type="i2c-value-type">1</mtsplt:i2c-write-value>
                 <mtsplt:i2c-read-write-address>
-                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
+                  <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">1</mtsplt:i2c-bus-id>
                   <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
-                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
+                  <mtsplt:i2c-address mtsplt:type="i2c-address-type">49</mtsplt:i2c-address>
+                  <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">48</mtsplt:i2c-offset>
+                  <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">32</mtsplt:i2c-mask>
                   <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
                 </mtsplt:i2c-read-write-address>
               </mtsplt:write-i2c-interface>
@@ -2088,10 +2705,22 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
               <mtsplt:i2c-read-write-address>
                 <mtsplt:i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:i2c-bus-id>
                 <mtsplt:i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:i2c-access>
-                <mtsplt:i2c-address mtsplt:type="i2c-address-type">0</mtsplt:i2c-address>
+                <mtsplt:i2c-address mtsplt:type="i2c-address-type">80</mtsplt:i2c-address>
                 <mtsplt:i2c-offset mtsplt:type="i2c-offset-type">0</mtsplt:i2c-offset>
-                <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:i2c-mask>
+                <mtsplt:i2c-mask mtsplt:type="i2c-mask-type">255</mtsplt:i2c-mask>
                 <mtsplt:i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:i2c-transaction-type>
+                <mtsplt:mux-list>
+                  <mtsplt:mux-number mtsplt:type="uint8">0</mtsplt:mux-number>
+                  <mtsplt:mux-i2c-info>
+                    <mtsplt:mux-i2c-bus-id mtsplt:type="i2c-bus-id-type">0</mtsplt:mux-i2c-bus-id>
+                    <mtsplt:mux-i2c-access mtsplt:type="i2c-access-type">one-byte</mtsplt:mux-i2c-access>
+                    <mtsplt:mux-i2c-transaction-type mtsplt:type="i2c-transaction-type">offset-and-data</mtsplt:mux-i2c-transaction-type>
+                    <mtsplt:mux-i2c-address mtsplt:type="i2c-address-type">115</mtsplt:mux-i2c-address>
+                    <mtsplt:mux-i2c-offset mtsplt:type="i2c-offset-type">5</mtsplt:mux-i2c-offset>
+                    <mtsplt:mux-i2c-mask mtsplt:type="i2c-mask-type">1</mtsplt:mux-i2c-mask>
+                    <mtsplt:mux-i2c-value mtsplt:type="i2c-value-type">5</mtsplt:mux-i2c-value>
+                  </mtsplt:mux-i2c-info>
+                </mtsplt:mux-list>
               </mtsplt:i2c-read-write-address>
             </mtsplt:memoryControl>
           </mtsplt:gbic-group>
@@ -2105,6 +2734,7 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
     <mtsplt:SERDES>
       <mtsplt:Packet-Processor-list>
         <mtsplt:pp-device-number mtsplt:type="pp-device-number-type">0</mtsplt:pp-device-number>
+        <mtsplt:serdes-ref-clock mtsplt:type="serdes-ref-clock-type">EXTERNAL_25_SINGLE_ENDED</mtsplt:serdes-ref-clock>
         <mtsplt:lane-list>
           <mtsplt:lane-number mtsplt:type="lane-number-type">0</mtsplt:lane-number>
           <mtsplt:lane-attributes-group>
@@ -2114,6 +2744,13 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
         </mtsplt:lane-list>
         <mtsplt:lane-list>
           <mtsplt:lane-number mtsplt:type="lane-number-type">1</mtsplt:lane-number>
+          <mtsplt:lane-attributes-group>
+            <mtsplt:tx-swap mtsplt:type="boolean">false</mtsplt:tx-swap>
+            <mtsplt:rx-swap mtsplt:type="boolean">false</mtsplt:rx-swap>
+          </mtsplt:lane-attributes-group>
+        </mtsplt:lane-list>
+        <mtsplt:lane-list>
+          <mtsplt:lane-number mtsplt:type="lane-number-type">2</mtsplt:lane-number>
           <mtsplt:lane-attributes-group>
             <mtsplt:tx-swap mtsplt:type="boolean">false</mtsplt:tx-swap>
             <mtsplt:rx-swap mtsplt:type="boolean">false</mtsplt:rx-swap>
@@ -2163,6 +2800,23 @@ Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet 
         </mtsplt:lane-list>
       </mtsplt:Packet-Processor-list>
     </mtsplt:SERDES>
+    <mtsplt:PHYs>
+      <mtsplt:phy-list>
+        <mtsplt:phy-number mtsplt:type="phy-number-type">0</mtsplt:phy-number>
+        <mtsplt:phy-type mtsplt:type="phy-type-type">alaska-88E1780</mtsplt:phy-type>
+        <mtsplt:download-method mtsplt:type="phy-firmware-download-method-type">none</mtsplt:download-method>
+      </mtsplt:phy-list>
+      <mtsplt:phy-list>
+        <mtsplt:phy-number mtsplt:type="phy-number-type">1</mtsplt:phy-number>
+        <mtsplt:phy-type mtsplt:type="phy-type-type">alaska-88E1780</mtsplt:phy-type>
+        <mtsplt:download-method mtsplt:type="phy-firmware-download-method-type">none</mtsplt:download-method>
+      </mtsplt:phy-list>
+      <mtsplt:phy-list>
+        <mtsplt:phy-number mtsplt:type="phy-number-type">2</mtsplt:phy-number>
+        <mtsplt:phy-type mtsplt:type="phy-type-type">alaska-88E2580</mtsplt:phy-type>
+        <mtsplt:download-method mtsplt:type="phy-firmware-download-method-type">none</mtsplt:download-method>
+      </mtsplt:phy-list>
+    </mtsplt:PHYs>
     <mtsplt:LEDs>
       <mtsplt:SystemLed-is-supported mtsplt:type="boolean">false</mtsplt:SystemLed-is-supported>
       <mtsplt:PortLedState-is-supported mtsplt:type="boolean">false</mtsplt:PortLedState-is-supported>

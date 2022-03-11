@@ -1,12 +1,12 @@
-From 64c7e1a8d88b4c9bd68acb6eaa1a0ba6bf911c1d Mon Sep 17 00:00:00 2001
+From 74b123801798ea4ba3b1387db88bae5e308cc33c Mon Sep 17 00:00:00 2001
 From: "cary.sc.chen" <cary.sc.chen@deltaww.com>
 Date: Thu, 24 Feb 2022 17:22:55 +0800
 Subject: [PATCH] Add test dts for Delta b30ge6x1
 
 ---
  .../boot/dts/marvell/delta-b30ge6x1-ac5.dtsi  | 372 ++++++++++++++++++
- .../boot/dts/marvell/delta-b30ge6x1-slim.dts  | 354 +++++++++++++++++
- 2 files changed, 726 insertions(+)
+ .../boot/dts/marvell/delta-b30ge6x1-slim.dts  | 350 ++++++++++++++++
+ 2 files changed, 722 insertions(+)
  create mode 100644 arch/arm64/boot/dts/marvell/delta-b30ge6x1-ac5.dtsi
  create mode 100644 arch/arm64/boot/dts/marvell/delta-b30ge6x1-slim.dts
 
@@ -390,10 +390,10 @@ index 000000000..610af4670
 +};
 diff --git a/arch/arm64/boot/dts/marvell/delta-b30ge6x1-slim.dts b/arch/arm64/boot/dts/marvell/delta-b30ge6x1-slim.dts
 new file mode 100644
-index 000000000..e5d9479d5
+index 000000000..2ee26fdcd
 --- /dev/null
 +++ b/arch/arm64/boot/dts/marvell/delta-b30ge6x1-slim.dts
-@@ -0,0 +1,354 @@
+@@ -0,0 +1,350 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +/*
 + * Device Tree For AC5_db.
@@ -675,10 +675,6 @@ index 000000000..e5d9479d5
 +	phy = <&phy0>;
 +};
 +
-+&eth1 {
-+	status = "okay";
-+};
-+
 +&usb1 {
 +	compatible = "chipidea,usb2";
 +	phys = <&usb1phy>;
@@ -691,32 +687,32 @@ index 000000000..e5d9479d5
 +	status = "okay";
 +	reg = <0x0 0x7F900000 0x0 0x40000>;
 +	ports {
-+		port1 {
-+			prestera,port-num = <1>;
++		port25 {
++			prestera,port-num = <25>;
 +			sfp = <&sfp1>;
 +		};
-+		port2 {
-+			prestera,port-num = <2>;
++		port26 {
++			prestera,port-num = <26>;
 +			sfp = <&sfp2>;
 +		};
 +
-+		port3 {
-+			prestera,port-num = <3>;
++		port27 {
++			prestera,port-num = <27>;
 +			sfp = <&sfp3>;
 +		};
 +
-+		port4 {
-+			prestera,port-num = <4>;
++		port28 {
++			prestera,port-num = <28>;
 +			sfp = <&sfp4>;
 +		};
 +
-+		port5 {
-+			prestera,port-num = <5>;
++		port29 {
++			prestera,port-num = <29>;
 +			sfp = <&sfp5>;
 +		};
 +
-+		port6 {
-+			prestera,port-num = <6>;
++		port30 {
++			prestera,port-num = <30>;
 +			sfp = <&sfp6>;
 +		};
 +
