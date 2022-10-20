@@ -173,6 +173,12 @@ static plat_psu_t plat_tn48m2_psus[] = {
         .power_status_path = "/sys/bus/i2c/devices/0-0041/psu2_powergood",
         .state = PLAT_PSU_STATE_PRESENT,
     },
+    [PLAT_PSU_ID_3] = {
+        .name = "DCIN",
+        .type = PLAT_PSU_TYPE_DC12,
+        .power_status_path = "/sys/bus/i2c/devices/0-0041/dcin_powergood",
+        .state = PLAT_PSU_STATE_PRESENT,
+    },
 };
 
 static plat_psu_t* get_plat_psu()

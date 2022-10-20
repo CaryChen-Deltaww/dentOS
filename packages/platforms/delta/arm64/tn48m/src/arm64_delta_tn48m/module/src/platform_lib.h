@@ -157,6 +157,7 @@ typedef enum plat_psu_id {
     PLAT_PSU_ID_INVALID = 0,
     PLAT_PSU_ID_1,
     PLAT_PSU_ID_2,
+    PLAT_PSU_ID_3,
     PLAT_PSU_ID_MAX
 } plat_psu_id_t;
 
